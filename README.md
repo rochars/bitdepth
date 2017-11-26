@@ -3,6 +3,8 @@ Change the bit depth of audio samples to and from 8, 16, 24, 32, 32 IEEE & 64-bi
 Copyright (c) 2017 Rafael da Silva Rocha.  
 https://github.com/rochars/bitdepth
 
+[![Build Status](https://travis-ci.org/rochars/bitdepth.svg?branch=master)](https://travis-ci.org/rochars/bitdepth) [![Build status](https://ci.appveyor.com/api/projects/status/rxyv4w8yo5ny97w0?svg=true)](https://ci.appveyor.com/project/rochars/bitdepth) [![codecov](https://codecov.io/gh/rochars/bitdepth/branch/master/graph/badge.svg)](https://codecov.io/gh/rochars/bitdepth) [![NPM version](https://img.shields.io/npm/v/bitdepth.svg?style=flat)](https://www.npmjs.com/package/bitdepth) [![NPM downloads](https://img.shields.io/npm/dm/bitdepth.svg?style=flat)](https://www.npmjs.com/package/bitdepth)
+
 ## Install
 ```
 npm install bitdepth
