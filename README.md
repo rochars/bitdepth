@@ -31,13 +31,13 @@ console.log(samples);
 /**
  * Change the bit depth of the data.
  * The input array is modified in-place.
- * @param {!Array<number>} data The data.
+ * @param {!Array<number>} samples The samples.
  * @param {string} originalBitDepth The original bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
  * @param {string} targetBitDepth The new bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
  */
-function toBitDepth(data, originalBitDepth, targetBitDepth) {
+function toBitDepth(samples, originalBitDepth, targetBitDepth) {
 ```
 
 ## LICENSE

@@ -20,36 +20,38 @@ const BitDepthMaxValues = {
 /**
  * Change the bit depth of the data.
  * The input array is modified in-place.
- * @param {!Array<number>} data The data.
+ * @param {!Array<number>} samples The samples.
  * @param {string} originalBitDepth The original bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
  * @param {string} targetBitDepth The new bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
  */
-function toBitDepth(data, originalBitDepth, targetBitDepth) {
+function toBitDepth(samples, originalBitDepth, targetBitDepth) {
     if (originalBitDepth == targetBitDepth) {
         return;
     }
     validateBitDepths(originalBitDepth, targetBitDepth);
-    let len = data.length;
+    let len = samples.length;
 
     for (let i=0; i<len; i++) {        
+        let sample = samples[i];
         // 8-bit samples are unsigned;
         // They are signed here before conversion
         // (other bit depths are all signed)
-        data[i] = sign8Bit(data[i], originalBitDepth);
+        sample = sign8Bit(sample, originalBitDepth);
 
         // If it is a float-to-float or int-to-float conversion then
         // the samples in the target bit depth will be normalized in the
         // -1.0 to 1.0 range; there is no need to multiply
         if (targetBitDepth == "32f" || targetBitDepth == "64") {
-            data[i] = toFloat(data[i], originalBitDepth);
+            sample = toFloat(sample, originalBitDepth);
 
         // If it is a float-to-int or int-to-int conversion then the
         // samples will be de-normalized according to the bit depth
         }else {
-            data[i] = toInt(data[i], originalBitDepth, targetBitDepth);
-        }  
+            sample = toInt(sample, originalBitDepth, targetBitDepth);
+        }
+        samples[i] = sample;
     }
 }
 
