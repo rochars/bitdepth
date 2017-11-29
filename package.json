@@ -1,6 +1,6 @@
 {
   "name": "bitdepth",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Change the bit depth of samples to and from 8, 16, 24, 32 & 64-bit.",
   "homepage": "https://github.com/rochars/bitdepth",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",

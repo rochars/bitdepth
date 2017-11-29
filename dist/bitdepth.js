@@ -69,7 +69,7 @@
 
 /*!
  * bitdepth
- * Change the bit depth of samples to and from 8, 16, 24, 32 & 64-bit..
+ * Change the bit depth of samples to and from 8, 16, 24, 32 & 64-bit.
  * Copyright (c) 2017 Rafael da Silva Rocha.
  * https://github.com/rochars/bitdepth
  *
@@ -109,7 +109,7 @@ function toBitDepth(samples, originalBitDepth, targetBitDepth) {
         // If it is a float-to-float or int-to-float conversion then
         // the samples in the target bit depth need to be normalized in the
         // -1.0 to 1.0 range; there is no need to multiply
-        if (targetBitDepth == "32f" || targetBitDepth == "64") {
+        if (["32f", "64"].includes(targetBitDepth)) {
             sample = toFloat(sample, originalBitDepth);
 
         // If it is a float-to-int or int-to-int conversion then the
