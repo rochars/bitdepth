@@ -3,7 +3,7 @@ Change the bit depth of samples to and from 8, 16, 24, 32 & 64-bit.
 Copyright (c) 2017 Rafael da Silva Rocha.  
 https://github.com/rochars/bitdepth
 
-[![Build Status](https://travis-ci.org/rochars/bitdepth.svg?branch=master)](https://travis-ci.org/rochars/bitdepth) [![Build status](https://ci.appveyor.com/api/projects/status/rxyv4w8yo5ny97w0?svg=true)](https://ci.appveyor.com/project/rochars/bitdepth) [![codecov](https://codecov.io/gh/rochars/bitdepth/branch/master/graph/badge.svg)](https://codecov.io/gh/rochars/bitdepth) [![NPM version](https://img.shields.io/npm/v/bitdepth.svg?style=flat)](https://www.npmjs.com/package/bitdepth) [![NPM downloads](https://img.shields.io/npm/dm/bitdepth.svg?style=flat)](https://www.npmjs.com/package/bitdepth)
+[![Travis](https://img.shields.io/travis/rochars/bitdepth.svg?style=for-the-badge)](https://travis-ci.org/rochars/bitdepth) [![AppVeyor](https://img.shields.io/appveyor/ci/rochars/bitdepth.svg?style=for-the-badge&logo=appveyor)](https://ci.appveyor.com/project/rochars/bitdepth) [![Codecov](https://img.shields.io/codecov/c/github/rochars/bitdepth.svg?style=for-the-badge)](https://codecov.io/gh/rochars/bitdepth) [![NPM version](https://img.shields.io/npm/v/bitdepth.svg?style=for-the-badge)](https://www.npmjs.com/package/bitdepth)
 
 ## Install
 ```
@@ -13,10 +13,12 @@ npm install bitdepth
 ## Use
 Currently there is **no dithering** when changing the bit depth.
 
-**64-bit** is always float.
+- **16-bit** is always int
+- **32-bit** can be int or float
+- **64-bit** is always float.
 
 ```javascript
-let bitDepth = require("../index.js");
+let bitDepth = require("bitdepth");
 
 // 8 bit samples
 let samples = [0, 255]
@@ -31,7 +33,7 @@ console.log(samples);
 ## toBitDepth()
 ```javascript
 /**
- * Change the bit depth of the data.
+ * Change the bit depth of the data in a sample array.
  * The input array is modified in-place.
  * @param {!Array<number>} samples The samples.
  * @param {string} originalBitDepth The original bit depth of the data.
@@ -39,7 +41,7 @@ console.log(samples);
  * @param {string} targetBitDepth The new bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
  */
-function toBitDepth(samples, originalBitDepth, targetBitDepth) {
+function toBitDepth(samples, originalBitDepth, targetBitDepth) {}
 ```
 
 ## LICENSE

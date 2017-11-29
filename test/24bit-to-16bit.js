@@ -10,13 +10,13 @@ describe("24-bit to 16-bit", function() {
     let fs = require("fs");
     let bitDepth = require("../index.js");
 
-    it("samples_ should be [-1, 1] (max range)",
+    it("samples should be [-1, 1] (max range)",
             function() {
         let samples = [-8388608, 8388607];
         bitDepth.toBitDepth(samples, "24", "16");
         assert.deepEqual(samples, [-32768, 32767]);
     });
-    it("samples_ should be [0]",
+    it("samples should be [0]",
             function() {
         let samples = [0];
         bitDepth.toBitDepth(samples, "24", "16");
@@ -92,7 +92,7 @@ describe("24-bit mono from file to 16-bit", function() {
     });
     it("samples.length should be > 0",
             function() {
-        assert.ok(wav.samples_.length > 0);
+        assert.ok(wav.samples.length > 0);
     });
 });
 
@@ -155,9 +155,9 @@ describe("24-bit mono from scratch to 16-bit (max range)", function() {
             function() {
         assert.ok(wav.subChunk2Size > 0);
     });
-    it("samples_ should be [-32768, 32767]",
+    it("samples should be [-32768, 32767]",
             function() {
-        assert.deepEqual(wav.samples_, [-32768, 32767]);
+        assert.deepEqual(wav.samples, [-32768, 32767]);
     });
 });
 
@@ -172,9 +172,9 @@ describe("24-bit mono from scratch to 16-bit (0)", function() {
     wav.fromScratch(1, 8000, "24", samples);
     wav.toBitDepth("16");
 
-    it("samples_ should be [0]",
+    it("samples should be [0]",
             function() {
-        assert.deepEqual(wav.samples_, [0]);
+        assert.deepEqual(wav.samples, [0]);
     });
 });
 */
