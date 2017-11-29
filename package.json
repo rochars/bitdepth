@@ -1,7 +1,7 @@
 {
   "name": "bitdepth",
-  "version": "1.0.1",
-  "description": "Change the bit depth of audio samples to and from 8, 16, 24, 32, 32 IEEE & 64-bit.",
+  "version": "1.0.2",
+  "description": "Change the bit depth of samples to and from 8, 16, 24, 32 & 64-bit.",
   "homepage": "https://github.com/rochars/bitdepth",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",
   "license": "MIT",

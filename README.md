@@ -1,5 +1,5 @@
 # bitdepth
-Change the bit depth of audio samples to and from 8, 16, 24, 32, 32 IEEE & 64-bit.  
+Change the bit depth of samples to and from 8, 16, 24, 32 & 64-bit.  
 Copyright (c) 2017 Rafael da Silva Rocha.  
 https://github.com/rochars/bitdepth
 
@@ -12,6 +12,8 @@ npm install bitdepth
 
 ## Use
 Currently there is **no dithering** when changing the bit depth.
+
+**64-bit** is always float.
 
 ```javascript
 let bitDepth = require("../index.js");

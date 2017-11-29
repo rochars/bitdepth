@@ -301,6 +301,381 @@
     
 
     
+    <h4 class="name" id="floatToInt"><span class="type-signature"></span>floatToInt<span class="signature">(sample, newMaxValue)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Perform a float-to-int conversion.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sample</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The sample.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newMaxValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The max value for the target bit depth.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line153">line 153</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="intToInt"><span class="type-signature"></span>intToInt<span class="signature">(sample, oldMaxValue, newMaxValue)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Perform a int-to-int conversion.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>sample</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The sample.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>oldMaxValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The max value for the original bit depth.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>newMaxValue</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The max value for the target bit depth.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line137">line 137</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="sign8Bit"><span class="type-signature"></span>sign8Bit<span class="signature">(sample, originalBitDepth)</span><span class="type-signature"></span></h4>
     
 
@@ -425,7 +800,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line64">line 64</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -648,7 +1023,7 @@
 
 
 <div class="description">
-    Change the bit depth from int to float.The input array is modified in-place.
+    Change the bit depth of a sample to a new floating point bit depth.The input array is modified in-place.
 </div>
 
 
@@ -764,7 +1139,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line91">line 91</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line88">line 88</a>
     </li></ul></dd>
     
 
@@ -806,7 +1181,7 @@
 
 
 <div class="description">
-    Change the bit depth of the data.The input array is modified in-place.
+    Change the bit depth of a sample to a new integer bit depth.
 </div>
 
 
@@ -945,7 +1320,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line112">line 112</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line108">line 108</a>
     </li></ul></dd>
     
 
@@ -1103,7 +1478,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line77">line 77</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -1261,7 +1636,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line150">line 150</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line170">line 170</a>
     </li></ul></dd>
     
 
@@ -1334,13 +1709,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BitDepthMaxValues">BitDepthMaxValues</a></li><li><a href="global.html#sign8Bit">sign8Bit</a></li><li><a href="global.html#toBitDepth">toBitDepth</a></li><li><a href="global.html#toFloat">toFloat</a></li><li><a href="global.html#toInt">toInt</a></li><li><a href="global.html#unsign8Bit">unsign8Bit</a></li><li><a href="global.html#validateBitDepths">validateBitDepths</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#BitDepthMaxValues">BitDepthMaxValues</a></li><li><a href="global.html#floatToInt">floatToInt</a></li><li><a href="global.html#intToInt">intToInt</a></li><li><a href="global.html#sign8Bit">sign8Bit</a></li><li><a href="global.html#toBitDepth">toBitDepth</a></li><li><a href="global.html#toFloat">toFloat</a></li><li><a href="global.html#toInt">toInt</a></li><li><a href="global.html#unsign8Bit">unsign8Bit</a></li><li><a href="global.html#validateBitDepths">validateBitDepths</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Nov 26 2017 17:27:01 GMT-0200 (Horário brasileiro de verão)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Wed Nov 29 2017 00:29:01 GMT-0200 (Horário brasileiro de verão)
 </footer>
 
 <script> prettyPrint(); </script>
