@@ -34,9 +34,11 @@ const BitDepthFunctions = {
      */
     intToInt(sample, args) {
         if (sample > 0) {
-            sample = parseInt((sample / (args.old - 1)) * args.new - 1, 10);
+            sample = parseInt(
+                (sample / args.oldPositive) * args.newPositive, 10);
         } else {
-            sample = parseInt((sample / args.old) * args.new, 10);
+            sample = parseInt(
+                (sample / args.oldNegative) * args.newNegative, 10);
         }
         return sample;
     },
@@ -48,12 +50,8 @@ const BitDepthFunctions = {
      * @return {number}
      */
     floatToInt(sample, args) {
-        if (sample > 0) {
-            sample = sample * (args.new - 1);
-        } else {
-            sample = sample * args.new;
-        }
-        return sample;
+        return sample > 0 ?
+            sample * args.newPositive : sample * args.newNegative;
     },
 
     /**
@@ -63,12 +61,8 @@ const BitDepthFunctions = {
      * @return {number}
      */
     intToFloat(sample, args) {
-        if (sample > 0) {
-            sample = sample / (args.old - 1);
-        } else {
-            sample = sample / args.old;
-        }
-        return sample;
+        return sample > 0 ?
+            sample / args.oldPositive : sample / args.oldNegative;
     },
 
     /**
@@ -87,7 +81,7 @@ const BitDepthFunctions = {
 };
 
 /**
- * Change the bit depth of the data in a sample array.
+ * Change the bit depth of the data in a array.
  * The input array is modified in-place.
  * @param {!Array<number>} samples The samples.
  * @param {string} originalBitDepth The original bit depth of the data.
@@ -104,8 +98,10 @@ function toBitDepth(samples, originalBitDepth, targetBitDepth) {
         samples[i] = toFunction(
                 samples[i],
                 {
-                    "old": BitDepthMaxValues[originalBitDepth] / 2,
-                    "new": BitDepthMaxValues[targetBitDepth] / 2,
+                    "oldNegative": BitDepthMaxValues[originalBitDepth] / 2,
+                    "newNegative": BitDepthMaxValues[targetBitDepth] / 2,
+                    "oldPositive": BitDepthMaxValues[originalBitDepth] / 2 - 1,
+                    "newPositive": BitDepthMaxValues[targetBitDepth] / 2 - 1,
                     "original": originalBitDepth,
                     "target": targetBitDepth
                 }

@@ -18,7 +18,7 @@ Currently there is **no dithering** when changing the bit depth.
 - **64-bit** is always float.
 
 ```javascript
-let bitDepth = require("bitdepth");
+const bitDepth = require("bitdepth");
 
 // 8 bit samples
 let samples = [0, 255]
@@ -33,7 +33,7 @@ console.log(samples);
 ## toBitDepth()
 ```javascript
 /**
- * Change the bit depth of the data in a sample array.
+ * Change the bit depth of the data in a array.
  * The input array is modified in-place.
  * @param {!Array<number>} samples The samples.
  * @param {string} originalBitDepth The original bit depth of the data.
