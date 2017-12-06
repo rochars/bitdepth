@@ -101,13 +101,13 @@ const BitDepthFunctions = {
      * @param {Object} args Data about the original and target bit depths.
      * @return {number}
      */
-    intToInt(sample, args) {
+    "intToInt": function(sample, args) {
         if (sample > 0) {
             sample = parseInt(
-                (sample / args.oldPositive) * args.newPositive, 10);
+                (sample / args["oldPositive"]) * args["newPositive"], 10);
         } else {
             sample = parseInt(
-                (sample / args.oldNegative) * args.newNegative, 10);
+                (sample / args["oldNegative"]) * args["newNegative"], 10);
         }
         return sample;
     },
@@ -118,9 +118,9 @@ const BitDepthFunctions = {
      * @param {Object} args Data about the original and target bit depths.
      * @return {number}
      */
-    floatToInt(sample, args) {
+    "floatToInt": function(sample, args) {
         return sample > 0 ?
-            sample * args.newPositive : sample * args.newNegative;
+            sample * args["newPositive"] : sample * args["newNegative"];
     },
 
     /**
@@ -129,9 +129,9 @@ const BitDepthFunctions = {
      * @param {Object} args Data about the original and target bit depths.
      * @return {number}
      */
-    intToFloat(sample, args) {
+    "intToFloat": function(sample, args) {
         return sample > 0 ?
-            sample / args.oldPositive : sample / args.oldNegative;
+            sample / args["oldPositive"] : sample / args["oldNegative"];
     },
 
     /**
@@ -140,8 +140,8 @@ const BitDepthFunctions = {
      * @param {Object} args Data about the original and target bit depths.
      * @return {number}
      */
-    floatToFloat(sample, args) {
-        if (args.original == "64" && args.target == "32f") {
+    "floatToFloat": function(sample, args) {
+        if (args["original"] == "64" && args["target"] == "32f") {
             f64f32[0] = sample;
             sample = f64f32[0];
         }

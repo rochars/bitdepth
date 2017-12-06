@@ -1,6 +1,6 @@
 {
   "name": "bitdepth",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Change the bit depth of samples to and from 8, 16, 24, 32 & 64-bit.",
   "homepage": "https://github.com/rochars/bitdepth",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",
@@ -31,7 +31,7 @@
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "bundle": "webpack",
     "compile": "google-closure-compiler-js dist/bitdepth.js > dist/bitdepth-min.js --compilationLevel=ADVANCED",
-    "doc": "./node_modules/.bin/jsdoc index.js -d docs",
+    "doc": "./node_modules/.bin/jsdoc index.js -d docs -r README.md -t node_modules/docdash",
     "qa": "npm run lint && npm test",
     "pack": "npm run bundle && npm run compile && npm run doc",
     "build": "npm run qa && npm run pack"
@@ -39,6 +39,7 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "codecov": "^3.0.0",
+    "docdash": "^0.4.0",
     "google-closure-compiler-js": "^20170910.0.1",
     "jsdoc": "~3.5.5",
     "jshint": "^2.9.5",
