@@ -33,7 +33,7 @@
     "compile": "google-closure-compiler-js dist/bitdepth.js > dist/bitdepth-min.js --compilationLevel=ADVANCED",
     "doc": "./node_modules/.bin/jsdoc index.js -d docs -r README.md -t node_modules/docdash",
     "pack": "webpack && npm run compile && npm run doc",
-    "build": "npm run lint && npm test && npm run pack && npm run test-dist"
+    "build": "npm run lint && npm run pack && npm run test-dist && npm test"
   },
   "devDependencies": {
     "browser-env": "^3.2.5",

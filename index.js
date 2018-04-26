@@ -6,7 +6,8 @@
  *
  */
 
-const f64f32 = new Float32Array(1);
+/** @private */
+const f64f32_ = new Float32Array(1);
 
 /**
  * Max number of different values for each bit depth.
@@ -76,8 +77,8 @@ const CODECS = {
      */
     "floatToFloat": function(sample, args) {
         if (args["original"] == "64" && args["target"] == "32f") {
-            f64f32[0] = sample;
-            sample = f64f32[0];
+            f64f32_[0] = sample;
+            sample = f64f32_[0];
         }
         return sample;
     }
