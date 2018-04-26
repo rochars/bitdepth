@@ -12,9 +12,7 @@ npm install bitdepth
 ```
 
 ## Use
-Currently there is **no dithering** when changing the bit depth.
-
-Supported bit depths:
+Supported bit depths (to and from):
  - "8": 8-bit int (unsigned)
  - "16": 16-bit int
  - "24": 24-bit int
@@ -40,7 +38,7 @@ console.log(samples);
 /**
  * Change the bit depth of the data in a array.
  * The input array is modified in-place.
- * @param {!Array<number>} samples The samples.
+ * @param {Array<number>} samples The samples.
  * @param {string} originalBitDepth The original bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
  * @param {string} targetBitDepth The new bit depth of the data.

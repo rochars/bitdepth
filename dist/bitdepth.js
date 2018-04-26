@@ -70,7 +70,7 @@
 /*!
  * bitdepth
  * Change the bit depth of samples to and from 8, 16, 24, 32 & 64-bit.
- * Copyright (c) 2017 Rafael da Silva Rocha.
+ * Copyright (c) 2017-2018 Rafael da Silva Rocha.
  * https://github.com/rochars/bitdepth
  *
  */
@@ -80,6 +80,7 @@ const f64f32 = new Float32Array(1);
 /**
  * Max number of different values for each bit depth.
  * @enum {number}
+ * @private
  */
 const MAX_VALUES = {
     "8": 256,
@@ -92,8 +93,10 @@ const MAX_VALUES = {
 
 /**
  * Functions to change the bit depth of a sample.
+ * @enum {Function}
+ * @private
  */
-const BitDepthFunctions = {
+const CODECS = {
 
     /**
      * Change the bit depth from int to int.
@@ -152,7 +155,7 @@ const BitDepthFunctions = {
 /**
  * Change the bit depth of the data in a array.
  * The input array is modified in-place.
- * @param {!Array<number>} samples The samples.
+ * @param {Array<number>} samples The samples.
  * @param {string} originalBitDepth The original bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
  * @param {string} targetBitDepth The new bit depth of the data.
@@ -186,6 +189,7 @@ function toBitDepth(samples, originalBitDepth, targetBitDepth) {
  * @param {string} targetBitDepth The new bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
  * @return {Function}
+ * @private
  */
 function getBitDepthFunction_(originalBitDepth, targetBitDepth) {
     let prefix;
@@ -200,7 +204,7 @@ function getBitDepthFunction_(originalBitDepth, targetBitDepth) {
     } else {
         suffix = "Int";
     }
-    return BitDepthFunctions[prefix + "To" + suffix];
+    return CODECS[prefix + "To" + suffix];
 }
 
 /**
@@ -209,6 +213,7 @@ function getBitDepthFunction_(originalBitDepth, targetBitDepth) {
  * @param {string} originalBitDepth The original bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
  * @return {number}
+ * @private
  */
 function sign8Bit_(sample, originalBitDepth) {
     if (originalBitDepth == "8") {
@@ -223,6 +228,7 @@ function sign8Bit_(sample, originalBitDepth) {
  * @param {string} targetBitDepth The target bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
  * @return {number}
+ * @private
  */
 function unsign8Bit_(sample, targetBitDepth) {
     if (targetBitDepth == "8") {
@@ -239,6 +245,7 @@ function unsign8Bit_(sample, targetBitDepth) {
  *     Should be one of "8", "16", "24", "32", "32f", "64".
  * @throws {Error} If any argument does not meet the criteria.
  * @return {boolean}
+ * @private
  */
 function validateBitDepths_(originalBitDepth, targetBitDepth) {
     let validBitDepths = ["8", "16", "24", "32", "32f", "64"];
@@ -250,7 +257,6 @@ function validateBitDepths_(originalBitDepth, targetBitDepth) {
 }
 
 window['bitDepth'] = window['bitDepth'] || {};window['bitDepth']['toBitDepth'] = toBitDepth;
-window['bitDepth']['BitDepthMaxValues'] = MAX_VALUES;
 
 
 /***/ })

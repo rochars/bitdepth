@@ -15,10 +15,6 @@ module.exports = {
               replace: "window['bitDepth'] = window['bitDepth'] || {};" + 
               "window['bitDepth']['toBitDepth'] = "
             },
-            {
-              search: 'module.exports.BitDepthMaxValues = ',
-              replace: "window['bitDepth']['BitDepthMaxValues'] = "
-            },
           ]
         }
       }
