@@ -8,7 +8,7 @@ var assert = require("assert");
 
 describe("interface", function() {
 
-    let bitdepth = require("../index.js");
+    let bitdepth = require("../test/loader.js");
     
     it("Should have the toBitDepth function available", function() {
         data = ["0"];

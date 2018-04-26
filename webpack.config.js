@@ -11,12 +11,13 @@ module.exports = {
         query: {
           multiple: [
             {
-              search: 'module.exports.toBitDepth',
-              replace: "window['toBitDepth']"
+              search: 'module.exports.toBitDepth = ',
+              replace: "window['bitDepth'] = window['bitDepth'] || {};" + 
+              "window['bitDepth']['toBitDepth'] = "
             },
             {
-              search: 'module.exports.BitDepthMaxValues',
-              replace: "window['BitDepthMaxValues']"
+              search: 'module.exports.BitDepthMaxValues = ',
+              replace: "window['bitDepth']['BitDepthMaxValues'] = "
             },
           ]
         }

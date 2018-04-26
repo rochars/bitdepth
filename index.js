@@ -12,7 +12,7 @@ const f64f32 = new Float32Array(1);
  * Max number of different values for each bit depth.
  * @enum {number}
  */
-const BitDepthMaxValues = {
+const MAX_VALUES = {
     "8": 256,
     "16": 65536,
     "24": 16777216,
@@ -90,23 +90,23 @@ const BitDepthFunctions = {
  *      One of "8", "16", "24", "32", "32f", "64"
  */
 function toBitDepth(samples, originalBitDepth, targetBitDepth) {
-    validateBitDepths(originalBitDepth, targetBitDepth);
-    let toFunction = getBitDepthFunction(originalBitDepth, targetBitDepth);
+    validateBitDepths_(originalBitDepth, targetBitDepth);
+    let toFunction = getBitDepthFunction_(originalBitDepth, targetBitDepth);
     let len = samples.length;
     for (let i=0; i<len; i++) {        
-        samples[i] = sign8Bit(samples[i], originalBitDepth);
+        samples[i] = sign8Bit_(samples[i], originalBitDepth);
         samples[i] = toFunction(
                 samples[i],
                 {
-                    "oldNegative": BitDepthMaxValues[originalBitDepth] / 2,
-                    "newNegative": BitDepthMaxValues[targetBitDepth] / 2,
-                    "oldPositive": BitDepthMaxValues[originalBitDepth] / 2 - 1,
-                    "newPositive": BitDepthMaxValues[targetBitDepth] / 2 - 1,
+                    "oldNegative": MAX_VALUES[originalBitDepth] / 2,
+                    "newNegative": MAX_VALUES[targetBitDepth] / 2,
+                    "oldPositive": MAX_VALUES[originalBitDepth] / 2 - 1,
+                    "newPositive": MAX_VALUES[targetBitDepth] / 2 - 1,
                     "original": originalBitDepth,
                     "target": targetBitDepth
                 }
             );
-        samples[i] = unsign8Bit(samples[i], targetBitDepth);
+        samples[i] = unsign8Bit_(samples[i], targetBitDepth);
     }
 }
 
@@ -118,7 +118,7 @@ function toBitDepth(samples, originalBitDepth, targetBitDepth) {
  *      One of "8", "16", "24", "32", "32f", "64"
  * @return {Function}
  */
-function getBitDepthFunction(originalBitDepth, targetBitDepth) {
+function getBitDepthFunction_(originalBitDepth, targetBitDepth) {
     let prefix;
     let suffix;
     if (["32f", "64"].includes(originalBitDepth)) {
@@ -141,7 +141,7 @@ function getBitDepthFunction(originalBitDepth, targetBitDepth) {
  *      One of "8", "16", "24", "32", "32f", "64"
  * @return {number}
  */
-function sign8Bit(sample, originalBitDepth) {
+function sign8Bit_(sample, originalBitDepth) {
     if (originalBitDepth == "8") {
         sample -= 128;
     }
@@ -155,7 +155,7 @@ function sign8Bit(sample, originalBitDepth) {
  *      One of "8", "16", "24", "32", "32f", "64"
  * @return {number}
  */
-function unsign8Bit(sample, targetBitDepth) {
+function unsign8Bit_(sample, targetBitDepth) {
     if (targetBitDepth == "8") {
         sample += 128;
     }
@@ -171,7 +171,7 @@ function unsign8Bit(sample, targetBitDepth) {
  * @throws {Error} If any argument does not meet the criteria.
  * @return {boolean}
  */
-function validateBitDepths(originalBitDepth, targetBitDepth) {
+function validateBitDepths_(originalBitDepth, targetBitDepth) {
     let validBitDepths = ["8", "16", "24", "32", "32f", "64"];
     if (validBitDepths.indexOf(originalBitDepth) == -1 ||
         validBitDepths.indexOf(targetBitDepth) == -1) {
@@ -181,4 +181,4 @@ function validateBitDepths(originalBitDepth, targetBitDepth) {
 }
 
 module.exports.toBitDepth = toBitDepth;
-module.exports.BitDepthMaxValues = BitDepthMaxValues;
+module.exports.BitDepthMaxValues = MAX_VALUES;

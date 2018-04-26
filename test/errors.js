@@ -9,7 +9,7 @@ let expect = chai.expect;
 describe('errors', function() {
     
     let fs = require("fs");
-    let bitDepth = require("../index.js");
+    let bitDepth = require("../test/loader.js");
     let testFunc;
         
     it("should throw an error if the input bit depth is not valid",

@@ -1,9 +1,10 @@
 # bitdepth
 Change the bit depth of samples to and from 8, 16, 24, 32 & 64-bit.  
-Copyright (c) 2017 Rafael da Silva Rocha.  
+Copyright (c) 2017-2018 Rafael da Silva Rocha.  
 https://github.com/rochars/bitdepth
 
-[![Travis](https://img.shields.io/travis/rochars/bitdepth.svg?style=for-the-badge)](https://travis-ci.org/rochars/bitdepth) [![AppVeyor](https://img.shields.io/appveyor/ci/rochars/bitdepth.svg?style=for-the-badge&logo=appveyor)](https://ci.appveyor.com/project/rochars/bitdepth) [![Codecov](https://img.shields.io/codecov/c/github/rochars/bitdepth.svg?style=for-the-badge)](https://codecov.io/gh/rochars/bitdepth) [![NPM version](https://img.shields.io/npm/v/bitdepth.svg?style=for-the-badge)](https://www.npmjs.com/package/bitdepth)
+[![NPM version](https://img.shields.io/npm/v/bitdepth.svg?style=for-the-badge)](https://www.npmjs.com/package/bitdepth) [![Docs](https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge)](https://rochars.github.io/bitdepth/index.html)  
+[![Codecov](https://img.shields.io/codecov/c/github/rochars/bitdepth.svg?style=flat-square)](https://codecov.io/gh/rochars/bitdepth) [![Unix Build](https://img.shields.io/travis/rochars/bitdepth.svg?style=flat-square)](https://travis-ci.org/rochars/bitdepth) [![Windows Build](https://img.shields.io/appveyor/ci/rochars/bitdepth.svg?style=flat-square&logo=appveyor)](https://ci.appveyor.com/project/rochars/bitdepth) [![Scrutinizer](https://img.shields.io/scrutinizer/g/rochars/bitdepth.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/rochars/bitdepth/)
 
 ## Install
 ```
@@ -13,9 +14,13 @@ npm install bitdepth
 ## Use
 Currently there is **no dithering** when changing the bit depth.
 
-- **16-bit** is always int
-- **32-bit** can be int or float
-- **64-bit** is always float.
+Supported bit depths:
+ - "8": 8-bit int (unsigned)
+ - "16": 16-bit int
+ - "24": 24-bit int
+ - "32": 32-bit int
+ - "32f": 32-bit float
+ - "64": 64-bit float
 
 ```javascript
 const bitDepth = require("bitdepth");
@@ -45,7 +50,7 @@ function toBitDepth(samples, originalBitDepth, targetBitDepth) {}
 ```
 
 ## LICENSE
-Copyright (c) 2017 Rafael da Silva Rocha.
+Copyright (c) 2017-2018 Rafael da Silva Rocha.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

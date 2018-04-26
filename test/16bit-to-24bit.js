@@ -8,7 +8,7 @@ let assert = require("assert");
 describe("16-bit to 24-bit (max range)", function() {
 
     let fs = require("fs");
-    let bitDepth = require("../index.js");
+    let bitDepth = require("../test/loader.js");
 
     it("samples should be [-8388608, 8388607] (max range)",
             function() {

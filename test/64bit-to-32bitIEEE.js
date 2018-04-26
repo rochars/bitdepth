@@ -8,7 +8,7 @@ let assert = require("assert");
 describe("64-bit IEEE to 32-bit IEEE", function() {
 
     let fs = require("fs");
-    let bitDepth = require("../index.js");
+    let bitDepth = require("../test/loader.js");
 
     it("samples should be [-1, 1]",
             function() {
