@@ -95,21 +95,19 @@ const CODECS = {
  */
 function toBitDepth(samples, originalBitDepth, targetBitDepth) {
     validateBitDepths_(originalBitDepth, targetBitDepth);
-    let toFunction = getBitDepthFunction_(originalBitDepth, targetBitDepth);
-    let len = samples.length;
+    const toFunction = getBitDepthFunction_(originalBitDepth, targetBitDepth);
+    const len  = samples.length;
+    const codecArgs = {
+        "oldNegative": MAX_VALUES[originalBitDepth] / 2,
+        "newNegative": MAX_VALUES[targetBitDepth] / 2,
+        "oldPositive": MAX_VALUES[originalBitDepth] / 2 - 1,
+        "newPositive": MAX_VALUES[targetBitDepth] / 2 - 1,
+        "original": originalBitDepth,
+        "target": targetBitDepth
+    };
     for (let i=0; i<len; i++) {        
         samples[i] = sign8Bit_(samples[i], originalBitDepth);
-        samples[i] = toFunction(
-                samples[i],
-                {
-                    "oldNegative": MAX_VALUES[originalBitDepth] / 2,
-                    "newNegative": MAX_VALUES[targetBitDepth] / 2,
-                    "oldPositive": MAX_VALUES[originalBitDepth] / 2 - 1,
-                    "newPositive": MAX_VALUES[targetBitDepth] / 2 - 1,
-                    "original": originalBitDepth,
-                    "target": targetBitDepth
-                }
-            );
+        samples[i] = toFunction(samples[i], codecArgs);
         samples[i] = unsign8Bit_(samples[i], targetBitDepth);
     }
 }
