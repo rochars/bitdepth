@@ -92,9 +92,12 @@ const CODECS = {
  *      One of "8", "16", "24", "32", "32f", "64"
  * @param {string} targetBitDepth The new bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
+ * @param {Array<number>=}
+ *      An optional array to write converted samples to.  Useful for writing to typed arrays.
  */
-function toBitDepth(samples, originalBitDepth, targetBitDepth) {
+function toBitDepth(samples, originalBitDepth, targetBitDepth, outputArray) {
     validateBitDepths_(originalBitDepth, targetBitDepth);
+    outputArray = outputArray || samples;
     const toFunction = getBitDepthFunction_(originalBitDepth, targetBitDepth);
     const len  = samples.length;
     const codecArgs = {
@@ -106,9 +109,9 @@ function toBitDepth(samples, originalBitDepth, targetBitDepth) {
         "target": targetBitDepth
     };
     for (let i=0; i<len; i++) {
-        samples[i] = sign8Bit_(samples[i], originalBitDepth);
-        samples[i] = toFunction(samples[i], codecArgs);
-        samples[i] = unsign8Bit_(samples[i], targetBitDepth);
+        outputArray[i] = sign8Bit_(samples[i], originalBitDepth);
+        outputArray[i] = toFunction(outputArray[i], codecArgs);
+        outputArray[i] = unsign8Bit_(outputArray[i], targetBitDepth);
     }
 }
 
