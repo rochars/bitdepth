@@ -92,8 +92,8 @@ const CODECS = {
  *      One of "8", "16", "24", "32", "32f", "64"
  * @param {string} targetBitDepth The new bit depth of the data.
  *      One of "8", "16", "24", "32", "32f", "64"
- * @param {Array<number>=}
- *      An optional array to write converted samples to.  Useful for writing to typed arrays.
+ * @param {Array<number>=} outputArray An optional array to write converted samples to.
+ *      Useful for writing to typed arrays.
  */
 function toBitDepth(samples, originalBitDepth, targetBitDepth, outputArray) {
     validateBitDepths_(originalBitDepth, targetBitDepth);
