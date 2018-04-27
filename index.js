@@ -105,7 +105,7 @@ function toBitDepth(samples, originalBitDepth, targetBitDepth) {
         "original": originalBitDepth,
         "target": targetBitDepth
     };
-    for (let i=0; i<len; i++) {        
+    for (let i=0; i<len; i++) {
         samples[i] = sign8Bit_(samples[i], originalBitDepth);
         samples[i] = toFunction(samples[i], codecArgs);
         samples[i] = unsign8Bit_(samples[i], targetBitDepth);
