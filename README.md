@@ -1,5 +1,5 @@
 # bitdepth
-Change the bit depth of samples to and from 8, 16, 24, 32 & 64-bit.  
+Change the resolution of samples to and from 8, 11, 12, 16, 20, 24, 32, 48 & 64-bit.  
 Copyright (c) 2017-2018 Rafael da Silva Rocha.  
 https://github.com/rochars/bitdepth
 
@@ -14,9 +14,7 @@ npm install bitdepth
 ## Use
 Supported bit depths (to and from):
  - "8": 8-bit int (unsigned)
- - "16": 16-bit int
- - "24": 24-bit int
- - "32": 32-bit int
+ - Anything between "9" and "48" (integers, signed)
  - "32f": 32-bit float
  - "64": 64-bit float
 
@@ -40,9 +38,9 @@ console.log(samples);
  * The input array is modified in-place.
  * @param {Array<number>} samples The samples.
  * @param {string} originalBitDepth The original bit depth of the data.
- *      One of "8", "16", "24", "32", "32f", "64"
+ *      One of "8" ... "48", "32f", "64"
  * @param {string} targetBitDepth The new bit depth of the data.
- *      One of "8", "16", "24", "32", "32f", "64"
+ *      One of "8" ... "48", "32f", "64"
  */
 function toBitDepth(samples, originalBitDepth, targetBitDepth) {}
 ```

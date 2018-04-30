@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2017 Rafael da Silva Rocha.
+ * Copyright (c) 2017-2018 Rafael da Silva Rocha.
  * 
  */
 
@@ -15,7 +15,7 @@ describe('errors', function() {
     it("should throw an error if the input bit depth is not valid",
             function () {
         testFunc = function() {
-            bitDepth.toBitDepth([], "33", "16");
+            bitDepth.toBitDepth([], "49", "16");
         };
         expect(testFunc).to.throw("Invalid bit depth.");
     });
@@ -23,7 +23,7 @@ describe('errors', function() {
     it("should throw an error if the output bit depth is not valid",
             function () {
         testFunc = function() {
-            bitDepth.toBitDepth([], "16", "33");
+            bitDepth.toBitDepth([], "16", "49");
         };
         expect(testFunc).to.throw("Invalid bit depth.");
     });
