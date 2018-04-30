@@ -109,7 +109,8 @@ const CODECS = {
      */
     "floatToInt": function(sample, args) {
         return sample > 0 ?
-            sample * args["newPositive"] : sample * args["newNegative"];
+            parseInt(sample * args["newPositive"], 10) :
+            parseInt(sample * args["newNegative"], 10);
     },
 
     /**
