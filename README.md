@@ -14,7 +14,7 @@ npm install bitdepth
 ## Use
 Supported bit depths (to and from):
  - "8": 8-bit int (unsigned)
- - Anything between "9" and "48" (integers, signed)
+ - Anything between "9" and "53" (integers, signed)
  - "32f": 32-bit float
  - "64": 64-bit float
 
@@ -36,11 +36,11 @@ console.log(samples);
 /**
  * Change the bit depth of the data in a array.
  * The input array is modified in-place.
- * @param {Array<number>} samples The samples.
- * @param {string} originalBitDepth The original bit depth of the data.
- *      One of "8" ... "48", "32f", "64"
- * @param {string} targetBitDepth The new bit depth of the data.
- *      One of "8" ... "48", "32f", "64"
+ * @param {!Array<number>} samples The samples.
+ * @param {!string} originalBitDepth The original bit depth of the data.
+ *      One of "8" ... "53", "32f", "64"
+ * @param {!string} targetBitDepth The desired bit depth for the data.
+ *      One of "8" ... "53", "32f", "64"
  */
 function toBitDepth(samples, originalBitDepth, targetBitDepth) {}
 ```
