@@ -111,22 +111,22 @@ function floatToFloat_(sample) {
 
 /**
  * Get the function to change the bit depth of a sample.
- * @param {!string} originalBitDepth The original bit depth of the data.
+ * @param {!string} original The original bit depth of the data.
  *      One of "8" ... "53", "32f", "64"
- * @param {!string} targetBitDepth The new bit depth of the data.
+ * @param {!string} target The new bit depth of the data.
  *      One of "8" ... "53", "32f", "64"
  * @return {!Function}
  * @private
  */
-function getBitDepthFunction_(originalBitDepth, targetBitDepth) {
-    if (["32f", "64"].includes(originalBitDepth)) {
-        if (["32f", "64"].includes(targetBitDepth)) {
+function getBitDepthFunction_(original, target) {
+    if (["32f", "64"].includes(original)) {
+        if (["32f", "64"].includes(target)) {
             return floatToFloat_;
         } else {
             return floatToInt_;
         }
     } else {
-        if (["32f", "64"].includes(targetBitDepth)) {
+        if (["32f", "64"].includes(target)) {
             return intToFloat_;
         } else {
             return intToInt_;
@@ -136,9 +136,7 @@ function getBitDepthFunction_(originalBitDepth, targetBitDepth) {
 
 /**
  * Validate the bit depth.
- * @param {!string} originalBitDepth The original bit depth.
- *     Should be one of "8" ... "53", "32f" or "64".
- * @param {!string} targetBitDepth The target bit depth.
+ * @param {!string} bitDepth The original bit depth.
  *     Should be one of "8" ... "53", "32f" or "64".
  * @throws {Error} If any argument does not meet the criteria.
  * @return {!boolean}
