@@ -13,36 +13,48 @@ const f64f32_ = new Float32Array(1);
  * Change the bit depth of the data in a array.
  * The input array is modified in-place.
  * @param {!Array<number>} samples The samples.
- * @param {!string} originalBitDepth The original bit depth of the data.
+ * @param {!string} original The original bit depth of the data.
  *      One of "8" ... "53", "32f", "64"
- * @param {!string} targetBitDepth The desired bit depth for the data.
+ * @param {!string} target The desired bit depth for the data.
  *      One of "8" ... "53", "32f", "64"
  */
-function toBitDepth(samples, originalBitDepth, targetBitDepth) {
-    if (originalBitDepth == targetBitDepth) {
-        return samples;
-    }
-    validateBitDepths_(originalBitDepth, targetBitDepth);
-    let toFunction = getBitDepthFunction_(originalBitDepth, targetBitDepth);
-    let len = samples.length;
-    let options = {
-            oldNegative: parseInt(
-                Math.pow(2, parseInt(originalBitDepth, 10)) / 2, 10),
-            newNegative: parseInt(
-                Math.pow(2, parseInt(targetBitDepth, 10)) / 2, 10),
-            oldPositive: parseInt(
-                Math.pow(2, parseInt(originalBitDepth, 10)) / 2 - 1, 10),
-            newPositive: parseInt(
-                Math.pow(2, parseInt(targetBitDepth, 10)) / 2 - 1, 10),
-            original: originalBitDepth,
-            target: targetBitDepth
+function toBitDepth(samples, original, target) {
+    if (original != target) {
+        validateBitDepth_(original);
+        validateBitDepth_(target);
+        let toFunction = getBitDepthFunction_(original, target);
+        let options = {
+            oldMin: Math.pow(2, parseInt(original, 10)) / 2,
+            newMin: Math.pow(2, parseInt(target, 10)) / 2,
+            oldMax: (Math.pow(2, parseInt(original, 10)) / 2) - 1,
+            newMax: (Math.pow(2, parseInt(target, 10)) / 2) - 1,
         };
-    for (let i=0; i<len; i++) {        
-        samples[i] = originalBitDepth == "8" ? samples[i] - 128 : samples[i];
-        samples[i] = toFunction(
-            samples[i],
-            options);
-        samples[i] = targetBitDepth == "8" ? samples[i] + 128 : samples[i];
+        signed8Bit_(samples, original, false);
+        for (let i=0; i<samples.length; i++) {        
+            samples[i] = toFunction(samples[i], options);
+        }
+        signed8Bit_(samples, target, true);
+    }
+}
+
+/**
+ * Sign or unsign 8-bit samples.
+ * The input array is modified in-place.
+ * @param {!Array<number>} samples The samples.
+ * @param {!string} bitDepth The original bit depth of the data.
+ * @param {!boolean} signed True if should sign the samples, false otherwise.
+ */
+function signed8Bit_(samples, bitDepth, signed) {
+    if (bitDepth == "8") {
+        if (signed) {
+            for (let i=0; i<samples.length; i++) {
+                samples[i] += 128;
+            }
+        } else {
+            for (let i=0; i<samples.length; i++) {
+                samples[i] -= 128;
+            }
+        }
     }
 }
 
@@ -55,11 +67,9 @@ function toBitDepth(samples, originalBitDepth, targetBitDepth) {
  */
 function intToInt_(sample, args) {
     if (sample > 0) {
-        sample = parseInt(
-            (sample / args.oldPositive) * args.newPositive, 10);
+        sample = parseInt((sample / args.oldMax) * args.newMax, 10);
     } else {
-        sample = parseInt(
-            (sample / args.oldNegative) * args.newNegative, 10);
+        sample = parseInt((sample / args.oldMin) * args.newMin, 10);
     }
     return sample;
 }
@@ -72,9 +82,8 @@ function intToInt_(sample, args) {
  * @private
  */
 function floatToInt_(sample, args) {
-    return sample > 0 ?
-        parseInt(sample * args.newPositive, 10) :
-        parseInt(sample * args.newNegative, 10);
+    return parseInt(
+        sample > 0 ? sample * args.newMax : sample * args.newMin, 10);
 }
 
 /**
@@ -85,18 +94,16 @@ function floatToInt_(sample, args) {
  * @private
  */
 function intToFloat_(sample, args) {
-    return sample > 0 ?
-        sample / args.oldPositive : sample / args.oldNegative;
+    return sample > 0 ? sample / args.oldMax : sample / args.oldMin;
 }
 
 /**
  * Change the bit depth from float to float.
  * @param {!number} sample The sample.
- * @param {!Object} args Data about the original and target bit depths.
  * @return {!number}
  * @private
  */
-function floatToFloat_(sample, args) {
+function floatToFloat_(sample) {
     f64f32_[0] = sample;
     sample = f64f32_[0];
     return sample;
@@ -130,20 +137,16 @@ function getBitDepthFunction_(originalBitDepth, targetBitDepth) {
 /**
  * Validate the bit depth.
  * @param {!string} originalBitDepth The original bit depth.
- *     Should be one of "8" ... "53", "32f", "64".
+ *     Should be one of "8" ... "53", "32f" or "64".
  * @param {!string} targetBitDepth The target bit depth.
- *     Should be one of "8" ... "53", "32f", "64".
+ *     Should be one of "8" ... "53", "32f" or "64".
  * @throws {Error} If any argument does not meet the criteria.
  * @return {!boolean}
  * @private
  */
-function validateBitDepths_(originalBitDepth, targetBitDepth) {
-    let validBitDepths = ["32f", "64"];
-    for (let i=8; i<54; i++) {
-        validBitDepths.push(i.toString());
-    }
-    if (validBitDepths.indexOf(originalBitDepth) == -1 ||
-        validBitDepths.indexOf(targetBitDepth) == -1) {
+function validateBitDepth_(bitDepth) {
+    if ((bitDepth != "32f" && bitDepth != "64") &&
+            (parseInt(bitDepth, 10) < "8" || parseInt(bitDepth, 10) > "53")) {
         throw new Error("Invalid bit depth.");
     }
     return true;

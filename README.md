@@ -25,10 +25,8 @@ const bitDepth = require("bitdepth");
 let samples = [0, 255]
 
 // Make'em 32-bit floating point
+// The input array is modified in place.
 bitDepth.toBitDepth(samples, "8", "32f");
-
-console.log(samples);
-//[-1, 1]
 ```
 
 ## toBitDepth()
