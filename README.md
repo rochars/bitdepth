@@ -35,12 +35,14 @@ bitDepth.toBitDepth(samples, "8", "32f");
  * Change the bit depth of the data in a array.
  * The input array is modified in-place.
  * @param {!Array<number>} samples The samples.
- * @param {!string} originalBitDepth The original bit depth of the data.
+ * @param {!string} original The original bit depth of the data.
  *      One of "8" ... "53", "32f", "64"
- * @param {!string} targetBitDepth The desired bit depth for the data.
+ * @param {!string} target The desired bit depth for the data.
  *      One of "8" ... "53", "32f", "64"
+ * @param {Array<number>=} outputArray An optional array to write converted samples to.
+ *      Useful for writing to typed arrays.
  */
-function toBitDepth(samples, originalBitDepth, targetBitDepth) {}
+function toBitDepth(samples, original, target, outputArray) {}
 ```
 
 ## LICENSE
