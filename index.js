@@ -17,43 +17,35 @@ const f64f32_ = new Float32Array(1);
  *      One of "8" ... "53", "32f", "64"
  * @param {!string} target The desired bit depth for the data.
  *      One of "8" ... "53", "32f", "64"
+ * @param {Array<number>=} outputArray An optional array to write converted samples to.
+ *      Useful for writing to typed arrays.
  */
-function toBitDepth(samples, original, target) {
-    if (original != target) {
-        validateBitDepth_(original);
-        validateBitDepth_(target);
-        let toFunction = getBitDepthFunction_(original, target);
-        let options = {
-            oldMin: Math.pow(2, parseInt(original, 10)) / 2,
-            newMin: Math.pow(2, parseInt(target, 10)) / 2,
-            oldMax: (Math.pow(2, parseInt(original, 10)) / 2) - 1,
-            newMax: (Math.pow(2, parseInt(target, 10)) / 2) - 1,
-        };
-        signed8Bit_(samples, original, false);
-        for (let i=0; i<samples.length; i++) {        
-            samples[i] = toFunction(samples[i], options);
-        }
-        signed8Bit_(samples, target, true);
+function toBitDepth(samples, original, target, outputArray) {
+    if (original == "64" && target == "64") {
+        return;
     }
-}
-
-/**
- * Sign or unsign 8-bit samples.
- * The input array is modified in-place.
- * @param {!Array<number>} samples The samples.
- * @param {!string} bitDepth The original bit depth of the data.
- * @param {!boolean} signed True if should sign the samples, false otherwise.
- */
-function signed8Bit_(samples, bitDepth, signed) {
-    if (bitDepth == "8") {
-        if (signed) {
-            for (let i=0; i<samples.length; i++) {
-                samples[i] += 128;
-            }
-        } else {
-            for (let i=0; i<samples.length; i++) {
-                samples[i] -= 128;
-            }
+    validateBitDepth_(original);
+    validateBitDepth_(target);
+    outputArray = outputArray || samples;
+    const len = samples.length;
+    let toFunction = getBitDepthFunction_(original, target);
+    let options = {
+        oldMin: Math.pow(2, parseInt(original, 10)) / 2,
+        newMin: Math.pow(2, parseInt(target, 10)) / 2,
+        oldMax: (Math.pow(2, parseInt(original, 10)) / 2) - 1,
+        newMax: (Math.pow(2, parseInt(target, 10)) / 2) - 1,
+    };
+    if (original == "8") {
+        for (let i=0; i<len; i++) {
+            outputArray[i] = samples[i] -= 128;
+        }
+    }
+    for (let i=0; i<len; i++) {        
+        outputArray[i] = toFunction(samples[i], options);
+    }
+    if (target == "8") {
+        for (let i=0; i<len; i++) {
+            outputArray[i] = outputArray[i] += 128;
         }
     }
 }
