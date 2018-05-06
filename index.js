@@ -120,13 +120,13 @@ function getBitDepthFunction_(original, target) {
         }
     } else {
         if (["32f", "64"].includes(target)) {
-            return intToFloat_;
+            func = intToFloat_;
         } else {
             func = intToInt_;
         }
     }
     if (original == target) {
-        func = function(x,y) {return x;};
+        func = function(x) {return x;};
     }
     return func;
 }
