@@ -1,7 +1,7 @@
 {
   "name": "bitdepth",
-  "version": "3.1.1",
-  "description": "Change the resolution of samples to and from 8, 11, 12, 16, 20, 24, 32, 48 & 64-bit.",
+  "version": "3.1.2",
+  "description": "Change the resolution of samples to and from any bit depth.",
   "homepage": "https://github.com/rochars/bitdepth",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",
   "license": "MIT",
@@ -36,7 +36,8 @@
     "coverage": "nyc report --reporter=lcov > coverage.lcov && codecov",
     "doc": "./node_modules/.bin/jsdoc index.js -d docs -r README.md -t node_modules/docdash",
     "pack": "webpack && npm run test-dist",
-    "build": "npm run lint && npm run pack && npm test && npm run doc"
+    "build": "npm run lint && npm test && npm run pack && npm run doc",
+    "build-ci": "npm run lint && npm run pack && npm test && npm run doc"
   },
   "devDependencies": {
     "browser-env": "^3.2.5",

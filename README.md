@@ -1,10 +1,12 @@
 # bitdepth
-Change the resolution of samples to and from 8, 11, 12, 16, 20, 24, 32, 48 & 64-bit.  
 Copyright (c) 2017-2018 Rafael da Silva Rocha.  
 https://github.com/rochars/bitdepth
 
 [![NPM version](https://img.shields.io/npm/v/bitdepth.svg?style=for-the-badge)](https://www.npmjs.com/package/bitdepth) [![Docs](https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge)](https://rochars.github.io/bitdepth/index.html)  
 [![Codecov](https://img.shields.io/codecov/c/github/rochars/bitdepth.svg?style=flat-square)](https://codecov.io/gh/rochars/bitdepth) [![Unix Build](https://img.shields.io/travis/rochars/bitdepth.svg?style=flat-square)](https://travis-ci.org/rochars/bitdepth) [![Windows Build](https://img.shields.io/appveyor/ci/rochars/bitdepth.svg?style=flat-square&logo=appveyor)](https://ci.appveyor.com/project/rochars/bitdepth) [![Scrutinizer](https://img.shields.io/scrutinizer/g/rochars/bitdepth.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/rochars/bitdepth/)
+
+## About
+Change the resolution of samples to and from any bit depth. Works in Node.js and the in the browser.
 
 ## Install
 ```

@@ -9,7 +9,8 @@ module.exports = {
       options: {
         languageIn: 'ECMASCRIPT6',
         languageOut: 'ECMASCRIPT5',
-        compilationLevel: 'ADVANCED'
+        compilationLevel: 'ADVANCED',
+        warningLevel: "VERBOSE"
       }
     })
   ],
