@@ -13,9 +13,9 @@ const f64f32_ = new Float32Array(1);
  * Change the bit depth of the data in a array.
  * The input array is modified in-place.
  * @param {!Array<number>} samples The samples.
- * @param {!string} original The original bit depth of the data.
+ * @param {string} original The original bit depth of the data.
  *      One of "8" ... "53", "32f", "64"
- * @param {!string} target The desired bit depth for the data.
+ * @param {string} target The desired bit depth for the data.
  *      One of "8" ... "53", "32f", "64"
  * @param {Array<number>=} outputArray An optional array to write converted samples to.
  *      Useful for writing to typed arrays.
@@ -52,9 +52,9 @@ function toBitDepth(samples, original, target, outputArray) {
 
 /**
  * Change the bit depth from int to int.
- * @param {!number} sample The sample.
+ * @param {number} sample The sample.
  * @param {!Object} args Data about the original and target bit depths.
- * @return {!number}
+ * @return {number}
  * @private
  */
 function intToInt_(sample, args) {
@@ -68,9 +68,9 @@ function intToInt_(sample, args) {
 
 /**
  * Change the bit depth from float to int.
- * @param {!number} sample The sample.
+ * @param {number} sample The sample.
  * @param {!Object} args Data about the original and target bit depths.
- * @return {!number}
+ * @return {number}
  * @private
  */
 function floatToInt_(sample, args) {
@@ -80,9 +80,9 @@ function floatToInt_(sample, args) {
 
 /**
  * Change the bit depth from int to float.
- * @param {!number} sample The sample.
+ * @param {number} sample The sample.
  * @param {!Object} args Data about the original and target bit depths.
- * @return {!number}
+ * @return {number}
  * @private
  */
 function intToFloat_(sample, args) {
@@ -91,8 +91,8 @@ function intToFloat_(sample, args) {
 
 /**
  * Change the bit depth from float to float.
- * @param {!number} sample The sample.
- * @return {!number}
+ * @param {number} sample The sample.
+ * @return {number}
  * @private
  */
 function floatToFloat_(sample) {
@@ -102,9 +102,9 @@ function floatToFloat_(sample) {
 
 /**
  * Return the function to change the bit depth of a sample.
- * @param {!string} original The original bit depth of the data.
+ * @param {string} original The original bit depth of the data.
  *      One of "8" ... "53", "32f", "64"
- * @param {!string} target The new bit depth of the data.
+ * @param {string} target The new bit depth of the data.
  *      One of "8" ... "53", "32f", "64"
  * @return {!Function}
  * @private
@@ -133,7 +133,7 @@ function getBitDepthFunction_(original, target) {
 
 /**
  * Validate the bit depth.
- * @param {!string} bitDepth The original bit depth.
+ * @param {string} bitDepth The original bit depth.
  *     Should be one of "8" ... "53", "32f" or "64".
  * @throws {Error} If any argument does not meet the criteria.
  * @private
