@@ -19,11 +19,6 @@ Use the compiled file in the */dist* folder:
 <script src="bitdepth-min.js"></script>
 ```
 
-Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
-```html
-<script src="https://cdn.jsdelivr.net/npm/bitdepth@3.1.3"></script>
-```
-
 ## Use
 Supported bit depths (to and from):
  - "8": 8-bit int (unsigned)
