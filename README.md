@@ -13,6 +13,17 @@ Change the resolution of samples to and from any bit depth. Works in Node.js and
 npm install bitdepth
 ```
 
+## Browser
+Use the compiled file in the */dist* folder:
+```html
+<script src="bitdepth-min.js"></script>
+```
+
+Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
+```html
+<script src="https://cdn.jsdelivr.net/npm/bitdepth@3.1.3"></script>
+```
+
 ## Use
 Supported bit depths (to and from):
  - "8": 8-bit int (unsigned)
@@ -31,7 +42,9 @@ let samples = [0, 255]
 bitDepth.toBitDepth(samples, "8", "32f");
 ```
 
-## toBitDepth()
+## API
+
+### toBitDepth()
 ```javascript
 /**
  * Change the bit depth of the data in a array.
