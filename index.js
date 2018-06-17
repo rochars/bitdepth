@@ -33,8 +33,7 @@
 const f64f32_ = new Float32Array(1);
 
 /**
- * Change the bit depth of the data in a array.
- * The input array is modified in-place.
+ * Change the bit depth of samples. The input array is modified in-place.
  * @param {!Array<number>} samples The samples.
  * @param {string} original The original bit depth of the data.
  *      One of "8" ... "53", "32f", "64"
