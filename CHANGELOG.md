@@ -1,7 +1,7 @@
 # CHANGELOG
 
-## 4.0.0 (unreleased)
-- New API.
+## 4.0.0 (2018-06-17)
+- New API: just the function bitdepth().
 - New dist file: bitdepth.min.js.
 
 ## 3.1.4 (2018-06-11)
