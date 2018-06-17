@@ -40,40 +40,40 @@ const f64f32_ = new Float32Array(1);
  *      One of "8" ... "53", "32f", "64"
  * @param {string} target The desired bit depth for the data.
  *      One of "8" ... "53", "32f", "64"
- * @param {Array<number>=} outputArray An optional array to write converted samples to.
- *      Useful for writing to typed arrays.
+ * @param {Array<number>=} outputArray An optional array to write
+        converted samples to. Useful for writing to typed arrays.
  */
 function bitdepth(samples, original, target, outputArray) {
-    validateBitDepth_(original);
-    validateBitDepth_(target);
-    outputArray = outputArray || samples;
-    /** @type {!Function} */
-    let toFunction = getBitDepthFunction_(original, target);
-    /** @type {!Object} */
-    let options = {
-        oldMin: Math.pow(2, parseInt(original, 10)) / 2,
-        newMin: Math.pow(2, parseInt(target, 10)) / 2,
-        oldMax: (Math.pow(2, parseInt(original, 10)) / 2) - 1,
-        newMax: (Math.pow(2, parseInt(target, 10)) / 2) - 1,
-    };
-    /** @type {number} */
-    const len = samples.length;
-    // sign the samples if original is 8-bit
-    if (original == "8") {
-        for (let i=0; i<len; i++) {
-            outputArray[i] = samples[i] -= 128;
-        }
+  validateBitDepth_(original);
+  validateBitDepth_(target);
+  outputArray = outputArray || samples;
+  /** @type {!Function} */
+  let toFunction = getBitDepthFunction_(original, target);
+  /** @type {!Object} */
+  let options = {
+    oldMin: Math.pow(2, parseInt(original, 10)) / 2,
+    newMin: Math.pow(2, parseInt(target, 10)) / 2,
+    oldMax: (Math.pow(2, parseInt(original, 10)) / 2) - 1,
+    newMax: (Math.pow(2, parseInt(target, 10)) / 2) - 1,
+  };
+  /** @type {number} */
+  const len = samples.length;
+  // sign the samples if original is 8-bit
+  if (original == "8") {
+    for (let i=0; i<len; i++) {
+      outputArray[i] = samples[i] -= 128;
     }
-    // change the resolution of the samples
-    for (let i=0; i<len; i++) {        
-        outputArray[i] = toFunction(samples[i], options);
+  }
+  // change the resolution of the samples
+  for (let i=0; i<len; i++) {        
+    outputArray[i] = toFunction(samples[i], options);
+  }
+  // unsign the samples if target is 8-bit
+  if (target == "8") {
+    for (let i=0; i<len; i++) {
+      outputArray[i] = outputArray[i] += 128;
     }
-    // unsign the samples if target is 8-bit
-    if (target == "8") {
-        for (let i=0; i<len; i++) {
-            outputArray[i] = outputArray[i] += 128;
-        }
-    }
+  }
 }
 
 /**
@@ -84,12 +84,12 @@ function bitdepth(samples, original, target, outputArray) {
  * @private
  */
 function intToInt_(sample, args) {
-    if (sample > 0) {
-        sample = parseInt((sample / args.oldMax) * args.newMax, 10);
-    } else {
-        sample = parseInt((sample / args.oldMin) * args.newMin, 10);
-    }
-    return sample;
+  if (sample > 0) {
+    sample = parseInt((sample / args.oldMax) * args.newMax, 10);
+  } else {
+    sample = parseInt((sample / args.oldMin) * args.newMin, 10);
+  }
+  return sample;
 }
 
 /**
@@ -100,8 +100,8 @@ function intToInt_(sample, args) {
  * @private
  */
 function floatToInt_(sample, args) {
-    return parseInt(
-        sample > 0 ? sample * args.newMax : sample * args.newMin, 10);
+  return parseInt(
+    sample > 0 ? sample * args.newMax : sample * args.newMin, 10);
 }
 
 /**
@@ -112,7 +112,7 @@ function floatToInt_(sample, args) {
  * @private
  */
 function intToFloat_(sample, args) {
-    return sample > 0 ? sample / args.oldMax : sample / args.oldMin;
+  return sample > 0 ? sample / args.oldMax : sample / args.oldMin;
 }
 
 /**
@@ -122,8 +122,8 @@ function intToFloat_(sample, args) {
  * @private
  */
 function floatToFloat_(sample) {
-    f64f32_[0] = sample;
-    return f64f32_[0];
+  f64f32_[0] = sample;
+  return f64f32_[0];
 }
 
 /**
@@ -136,25 +136,25 @@ function floatToFloat_(sample) {
  * @private
  */
 function getBitDepthFunction_(original, target) {
-    /** @type {!Function} */
-    let func;
-    if (["32f", "64"].includes(original)) {
-        if (["32f", "64"].includes(target)) {
-            func = floatToFloat_;
-        } else {
-            func = floatToInt_;
-        }
+  /** @type {!Function} */
+  let func;
+  if (["32f", "64"].includes(original)) {
+    if (["32f", "64"].includes(target)) {
+      func = floatToFloat_;
     } else {
-        if (["32f", "64"].includes(target)) {
-            func = intToFloat_;
-        } else {
-            func = intToInt_;
-        }
+      func = floatToInt_;
     }
-    if (original == target) {
-        func = function(x) {return x;};
+  } else {
+    if (["32f", "64"].includes(target)) {
+      func = intToFloat_;
+    } else {
+      func = intToInt_;
     }
-    return func;
+  }
+  if (original == target) {
+    func = function(x) {return x;};
+  }
+  return func;
 }
 
 /**
@@ -165,10 +165,10 @@ function getBitDepthFunction_(original, target) {
  * @private
  */
 function validateBitDepth_(bitDepth) {
-    if ((bitDepth != "32f" && bitDepth != "64") &&
-            (parseInt(bitDepth, 10) < "8" || parseInt(bitDepth, 10) > "53")) {
-        throw new Error("Invalid bit depth.");
-    }
+  if ((bitDepth != "32f" && bitDepth != "64") &&
+      (parseInt(bitDepth, 10) < "8" || parseInt(bitDepth, 10) > "53")) {
+    throw new Error("Invalid bit depth.");
+  }
 }
 
 module.exports = bitdepth;
