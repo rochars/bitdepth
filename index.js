@@ -1,9 +1,32 @@
-/**
- * bitdepth
- * Change the resolution of samples to and from 8, 11, 12, 16, 20, 24, 32, 48 & 64-bit.
- * Copyright (c) 2017-2018 Rafael da Silva Rocha.
+/*
+ * bitdepth: Change the resolution of samples to and from any bit depth.
  * https://github.com/rochars/bitdepth
  *
+ * Copyright (c) 2017-2018 Rafael da Silva Rocha.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ *
+ */
+
+/**
+ * @fileoverview The bitdepth() function and private helper functions.
  */
 
 /** @private */
@@ -24,13 +47,16 @@ function bitdepth(samples, original, target, outputArray) {
     validateBitDepth_(original);
     validateBitDepth_(target);
     outputArray = outputArray || samples;
+    /** @type {!Function} */
     let toFunction = getBitDepthFunction_(original, target);
+    /** @type {!Object} */
     let options = {
         oldMin: Math.pow(2, parseInt(original, 10)) / 2,
         newMin: Math.pow(2, parseInt(target, 10)) / 2,
         oldMax: (Math.pow(2, parseInt(original, 10)) / 2) - 1,
         newMax: (Math.pow(2, parseInt(target, 10)) / 2) - 1,
     };
+    /** @type {number} */
     const len = samples.length;
     // sign the samples if original is 8-bit
     if (original == "8") {

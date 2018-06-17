@@ -9,9 +9,6 @@
     "bit depth",
     "audio",
     "samples",
-    "resample",
-    "server",
-    "browser",
     "8-bit",
     "11-bit",
     "12-bit",
@@ -22,12 +19,14 @@
     "48-bit",
     "64-bit",
     "integer",
-    "float",
-    "IEEE"
+    "float"
   ],
   "repository": {
     "type": "git",
     "url": "git://github.com/rochars/bitdepth.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rochars/bitdepth/issues"
   },
   "scripts": {
     "lint": "jshint index.js && jshint test",
