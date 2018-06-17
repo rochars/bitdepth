@@ -137,22 +137,21 @@ function floatToFloat_(sample) {
  */
 function getBitDepthFunction_(original, target) {
   /** @type {!Function} */
-  let func;
-  if (["32f", "64"].includes(original)) {
-    if (["32f", "64"].includes(target)) {
-      func = floatToFloat_;
+  let func = function(x) {return x;};
+  if (original != target) {
+    if (["32f", "64"].includes(original)) {
+      if (["32f", "64"].includes(target)) {
+        func = floatToFloat_;
+      } else {
+        func = floatToInt_;
+      }
     } else {
-      func = floatToInt_;
+      if (["32f", "64"].includes(target)) {
+        func = intToFloat_;
+      } else {
+        func = intToInt_;
+      }
     }
-  } else {
-    if (["32f", "64"].includes(target)) {
-      func = intToFloat_;
-    } else {
-      func = intToInt_;
-    }
-  }
-  if (original == target) {
-    func = function(x) {return x;};
   }
   return func;
 }
