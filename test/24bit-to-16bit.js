@@ -13,13 +13,13 @@ describe("24-bit to 16-bit", function() {
     it("samples should be [-1, 1] (max range)",
             function() {
         let samples = [-8388608, 8388607];
-        bitDepth.toBitDepth(samples, "24", "16");
+        bitDepth(samples, "24", "16");
         assert.deepEqual(samples, [-32768, 32767]);
     });
     it("samples should be [0]",
             function() {
         let samples = [0];
-        bitDepth.toBitDepth(samples, "24", "16");
+        bitDepth(samples, "24", "16");
         assert.deepEqual(samples, [0]);
     });
 });

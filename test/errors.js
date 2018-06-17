@@ -15,7 +15,7 @@ describe('errors', function() {
     it("should throw an error if the input bit depth is not valid",
             function () {
         testFunc = function() {
-            bitDepth.toBitDepth([], "57", "16");
+            bitDepth([], "57", "16");
         };
         expect(testFunc).to.throw("Invalid bit depth.");
     });
@@ -23,7 +23,7 @@ describe('errors', function() {
     it("should throw an error if the output bit depth is not valid",
             function () {
         testFunc = function() {
-            bitDepth.toBitDepth([], "16", "57");
+            bitDepth([], "16", "57");
         };
         expect(testFunc).to.throw("Invalid bit depth.");
     });

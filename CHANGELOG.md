@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 4.0.0 (unreleased)
+- New API.
+- New dist file: bitdepth.min.js.
+
 ## 3.1.4 (2018-06-11)
 - fix: remove dist from npm in v1 to avoid breaking dependents.
 

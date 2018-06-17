@@ -4,12 +4,14 @@
  *
  */
 
-let bitDepth = require('../index.js');
+let bitDepth;
 
 if (process.argv[3] == '--dist') {
     require('browser-env')();let assert = require('assert');
-    require('../dist/bitdepth-min.js');
-    toBitDepth = window.toBitDepth;
+    require('../dist/bitdepth.min.js');
+    bitDepth = window.bitdepth;
+} else {
+	bitDepth = require('../index.js');
 }
 
 module.exports = bitDepth;

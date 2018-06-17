@@ -16,7 +16,12 @@ npm install bitdepth
 ## Browser
 Use the compiled file in the */dist* folder:
 ```html
-<script src="bitdepth-min.js"></script>
+<script src="bitdepth.min.js"></script>
+```
+
+Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
+```html
+<script src="https://cdn.jsdelivr.net/npm/bitdepth@4/dist/bitdepth.min.js"></script>
 ```
 
 ## Use
@@ -27,19 +32,19 @@ Supported bit depths (to and from):
  - "64": 64-bit float
 
 ```javascript
-const bitDepth = require("bitdepth");
+const bitdepth = require("bitdepth");
 
 // 8 bit samples
 let samples = [0, 255]
 
 // Make'em 32-bit floating point
 // The input array is modified in place.
-bitDepth.toBitDepth(samples, "8", "32f");
+bitdepth(samples, "8", "32f");
 ```
 
 ## API
 
-### toBitDepth()
+### bitdepth()
 ```javascript
 /**
  * Change the bit depth of the data in a array.
@@ -52,7 +57,7 @@ bitDepth.toBitDepth(samples, "8", "32f");
  * @param {Array<number>=} outputArray An optional array to write converted samples to.
  *      Useful for writing to typed arrays.
  */
-function toBitDepth(samples, original, target, outputArray) {}
+function bitdepth(samples, original, target, outputArray) {}
 ```
 
 ## LICENSE

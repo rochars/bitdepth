@@ -13,13 +13,13 @@ describe("8-bit to 48-bit", function() {
     it("samples should be [-1, 1]",
             function() {
         let samples = [0, 255];
-        bitDepth.toBitDepth(samples, "8", "48");
+        bitDepth(samples, "8", "48");
         assert.deepEqual(samples, [-140737488355328, 140737488355327]);
     });
     it("samples should be [0]",
             function() {
         let samples = [128];
-        bitDepth.toBitDepth(samples, "8", "48");
+        bitDepth(samples, "8", "48");
         assert.deepEqual(samples, [0]);
     });
 });

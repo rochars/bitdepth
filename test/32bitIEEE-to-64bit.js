@@ -13,13 +13,13 @@ describe("32-bit IEEE to 64-bit", function() {
     it("samples should be [-1, 1]",
             function() {
         let samples = [-1, 1];
-        bitDepth.toBitDepth(samples, "32f", "64");
+        bitDepth(samples, "32f", "64");
         assert.deepEqual(samples, [-1, 1]);
     });
     it("samples should be [0]",
             function() {
         let samples = [0];
-        bitDepth.toBitDepth(samples, "32f", "64");
+        bitDepth(samples, "32f", "64");
         assert.deepEqual(samples, [0]);
     });
 });
