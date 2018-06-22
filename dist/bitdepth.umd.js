@@ -1,43 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>index.js - Documentation</title>
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["bitdepth"] = factory();
+	else
+		root["bitdepth"] = factory();
+})(typeof self !== 'undefined' ? self : this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-    <script src="scripts/prettify/prettify.js"></script>
-    <script src="scripts/prettify/lang-css.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
-</head>
-<body>
-
-<input type="checkbox" id="nav-trigger" class="nav-trigger" />
-<label for="nav-trigger" class="navicon-button x">
-  <div class="navicon"></div>
-</label>
-
-<label for="nav-trigger" class="overlay"></label>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-bitdepth.html">bitdepth</a><ul class='methods'><li data-type='method'><a href="module-bitdepth.html#.bitdepth">bitdepth</a></li></ul></li></ul>
-</nav>
-
-<div id="main">
-    
-    <h1 class="page-title">index.js</h1>
-    
-
-    
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/*
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (immutable) */ __webpack_exports__["bitdepth"] = bitdepth;
+/*
  * bitdepth: Change the resolution of samples to and from any bit depth.
  * https://github.com/rochars/bitdepth
  *
@@ -75,21 +118,21 @@ const f64f32_ = new Float32Array(1);
 
 /**
  * Change the bit depth of samples. The input array is modified in-place.
- * @param {!Array&lt;number>} samples The samples.
+ * @param {!Array<number>} samples The samples.
  * @param {string} original The original bit depth of the data.
  *      One of "8" ... "53", "32f", "64"
  * @param {string} target The desired bit depth for the data.
  *      One of "8" ... "53", "32f", "64"
- * @param {Array&lt;number>=} outputArray An optional array to write
+ * @param {Array<number>=} outputArray An optional array to write
         converted samples to. Useful for writing to typed arrays.
  */
-export function bitdepth(samples, original, target, outputArray) {
+function bitdepth(samples, original, target, outputArray) {
   validateBitDepth_(original);
   validateBitDepth_(target);
   outputArray = outputArray || samples;
   /** @type {!Function} */
   let toFunction = getBitDepthFunction_(original, target);
-  /** @type {!Object&lt;string, number>} */
+  /** @type {!Object<string, number>} */
   let options = {
     oldMin: Math.pow(2, parseInt(original, 10)) / 2,
     newMin: Math.pow(2, parseInt(target, 10)) / 2,
@@ -100,17 +143,17 @@ export function bitdepth(samples, original, target, outputArray) {
   const len = samples.length;
   // sign the samples if original is 8-bit
   if (original == "8") {
-    for (let i=0; i&lt;len; i++) {
+    for (let i=0; i<len; i++) {
       outputArray[i] = samples[i] -= 128;
     }
   }
   // change the resolution of the samples
-  for (let i=0; i&lt;len; i++) {        
+  for (let i=0; i<len; i++) {        
     outputArray[i] = toFunction(samples[i], options);
   }
   // unsign the samples if target is 8-bit
   if (target == "8") {
-    for (let i=0; i&lt;len; i++) {
+    for (let i=0; i<len; i++) {
       outputArray[i] = outputArray[i] += 128;
     }
   }
@@ -119,7 +162,7 @@ export function bitdepth(samples, original, target, outputArray) {
 /**
  * Change the bit depth from int to int.
  * @param {number} sample The sample.
- * @param {!Object&lt;string, number>} args Data about the original and target bit depths.
+ * @param {!Object<string, number>} args Data about the original and target bit depths.
  * @return {number}
  * @private
  */
@@ -135,7 +178,7 @@ function intToInt_(sample, args) {
 /**
  * Change the bit depth from float to int.
  * @param {number} sample The sample.
- * @param {!Object&lt;string, number>} args Data about the original and target bit depths.
+ * @param {!Object<string, number>} args Data about the original and target bit depths.
  * @return {number}
  * @private
  */
@@ -147,7 +190,7 @@ function floatToInt_(sample, args) {
 /**
  * Change the bit depth from int to float.
  * @param {number} sample The sample.
- * @param {!Object&lt;string, number>} args Data about the original and target bit depths.
+ * @param {!Object<string, number>} args Data about the original and target bit depths.
  * @return {number}
  * @private
  */
@@ -204,27 +247,13 @@ function getBitDepthFunction_(original, target) {
  * @private
  */
 function validateBitDepth_(bitDepth) {
-  if ((bitDepth != "32f" &amp;&amp; bitDepth != "64") &amp;&amp;
-      (parseInt(bitDepth, 10) &lt; "8" || parseInt(bitDepth, 10) > "53")) {
+  if ((bitDepth != "32f" && bitDepth != "64") &&
+      (parseInt(bitDepth, 10) < "8" || parseInt(bitDepth, 10) > "53")) {
     throw new Error("Invalid bit depth.");
   }
 }
-</code></pre>
-        </article>
-    </section>
 
 
-
-
-</div>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Fri Jun 22 2018 16:16:10 GMT-0300 (Hora oficial do Brasil) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
-</footer>
-
-<script>prettyPrint();</script>
-<script src="scripts/linenumber.js"></script>
-</body>
-</html>
+/***/ })
+/******/ ]);
+});

@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 5.0.0 (unreleased)
+- ES6 module.
+
 ## 4.0.0 (2018-06-17)
 - New API: just the function bitdepth().
 - New dist file: bitdepth.min.js.

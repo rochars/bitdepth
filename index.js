@@ -29,6 +29,8 @@
  * @fileoverview The bitdepth() function and private helper functions.
  */
 
+/** @module bitdepth */
+
 /** @private */
 const f64f32_ = new Float32Array(1);
 
@@ -42,13 +44,13 @@ const f64f32_ = new Float32Array(1);
  * @param {Array<number>=} outputArray An optional array to write
         converted samples to. Useful for writing to typed arrays.
  */
-function bitdepth(samples, original, target, outputArray) {
+export function bitdepth(samples, original, target, outputArray) {
   validateBitDepth_(original);
   validateBitDepth_(target);
   outputArray = outputArray || samples;
   /** @type {!Function} */
   let toFunction = getBitDepthFunction_(original, target);
-  /** @type {!Object} */
+  /** @type {!Object<string, number>} */
   let options = {
     oldMin: Math.pow(2, parseInt(original, 10)) / 2,
     newMin: Math.pow(2, parseInt(target, 10)) / 2,
@@ -78,7 +80,7 @@ function bitdepth(samples, original, target, outputArray) {
 /**
  * Change the bit depth from int to int.
  * @param {number} sample The sample.
- * @param {!Object} args Data about the original and target bit depths.
+ * @param {!Object<string, number>} args Data about the original and target bit depths.
  * @return {number}
  * @private
  */
@@ -94,7 +96,7 @@ function intToInt_(sample, args) {
 /**
  * Change the bit depth from float to int.
  * @param {number} sample The sample.
- * @param {!Object} args Data about the original and target bit depths.
+ * @param {!Object<string, number>} args Data about the original and target bit depths.
  * @return {number}
  * @private
  */
@@ -106,7 +108,7 @@ function floatToInt_(sample, args) {
 /**
  * Change the bit depth from int to float.
  * @param {number} sample The sample.
- * @param {!Object} args Data about the original and target bit depths.
+ * @param {!Object<string, number>} args Data about the original and target bit depths.
  * @return {number}
  * @private
  */
@@ -168,5 +170,3 @@ function validateBitDepth_(bitDepth) {
     throw new Error("Invalid bit depth.");
   }
 }
-
-module.exports = bitdepth;
