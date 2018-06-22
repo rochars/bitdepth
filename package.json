@@ -1,6 +1,6 @@
 {
   "name": "bitdepth",
-  "version": "5.0.0-alpha.0",
+  "version": "5.0.0",
   "description": "Change the resolution of samples to and from any bit depth.",
   "homepage": "https://github.com/rochars/bitdepth",
   "author": "Rafael S. Rocha <rocha.rafaelsilva@gmail.com>",
