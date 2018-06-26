@@ -5,9 +5,7 @@ https://github.com/rochars/bitdepth
 [![NPM version](https://img.shields.io/npm/v/bitdepth.svg?style=for-the-badge)](https://www.npmjs.com/package/bitdepth) [![Docs](https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge)](https://rochars.github.io/bitdepth/index.html)  
 [![Codecov](https://img.shields.io/codecov/c/github/rochars/bitdepth.svg?style=flat-square)](https://codecov.io/gh/rochars/bitdepth) [![Unix Build](https://img.shields.io/travis/rochars/bitdepth.svg?style=flat-square)](https://travis-ci.org/rochars/bitdepth) [![Windows Build](https://img.shields.io/appveyor/ci/rochars/bitdepth.svg?style=flat-square&logo=appveyor)](https://ci.appveyor.com/project/rochars/bitdepth) [![Scrutinizer](https://img.shields.io/scrutinizer/g/rochars/bitdepth.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/rochars/bitdepth/)
 
-Change the resolution of samples to and from any bit depth.
-
-Supported bit depths (to and from):
+Change the resolution of samples. Supported bit depths (to and from):
  - "8": 8-bit int (unsigned)
  - Anything between "9" and "53" (integers, signed)
  - "32f": 32-bit float
@@ -21,7 +19,7 @@ npm install bitdepth
 ## Use
 
 ### ES6
-import imaadpcm from **imaadpcm.js**:
+import bitdepth from **bitdepth.js**:
 ```javascript
 import bitdepth from 'bitdepth.js';
 
@@ -66,18 +64,6 @@ Or as a ES6 module in modern browsers from [jspm](https://jspm.io):
   import bitdepth from 'https://dev.jspm.io/bitdepth';
   // ...
 </script>
-```
-
-## Example
-```javascript
-const bitdepth = require("bitdepth");
-
-// 8 bit samples
-let samples = [0, 255]
-
-// Make'em 32-bit floating point
-// The input array is modified in place.
-bitdepth(samples, "8", "32f");
 ```
 
 ## API
