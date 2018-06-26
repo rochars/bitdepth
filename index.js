@@ -44,7 +44,7 @@ const f64f32_ = new Float32Array(1);
  * @param {Array<number>=} outputArray An optional array to write
         converted samples to. Useful for writing to typed arrays.
  */
-export function bitdepth(samples, original, target, outputArray) {
+export default function bitdepth(samples, original, target, outputArray) {
   validateBitDepth_(original);
   validateBitDepth_(target);
   outputArray = outputArray || samples;

@@ -1,5 +1,3 @@
-'use strict';
-
 /*
  * bitdepth: Change the resolution of samples to and from any bit depth.
  * https://github.com/rochars/bitdepth
@@ -173,4 +171,4 @@ function validateBitDepth_(bitDepth) {
   }
 }
 
-module.exports = bitdepth;
+export default bitdepth;

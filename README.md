@@ -5,39 +5,72 @@ https://github.com/rochars/bitdepth
 [![NPM version](https://img.shields.io/npm/v/bitdepth.svg?style=for-the-badge)](https://www.npmjs.com/package/bitdepth) [![Docs](https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge)](https://rochars.github.io/bitdepth/index.html)  
 [![Codecov](https://img.shields.io/codecov/c/github/rochars/bitdepth.svg?style=flat-square)](https://codecov.io/gh/rochars/bitdepth) [![Unix Build](https://img.shields.io/travis/rochars/bitdepth.svg?style=flat-square)](https://travis-ci.org/rochars/bitdepth) [![Windows Build](https://img.shields.io/appveyor/ci/rochars/bitdepth.svg?style=flat-square&logo=appveyor)](https://ci.appveyor.com/project/rochars/bitdepth) [![Scrutinizer](https://img.shields.io/scrutinizer/g/rochars/bitdepth.svg?style=flat-square&logo=scrutinizer)](https://scrutinizer-ci.com/g/rochars/bitdepth/)
 
-## About
 Change the resolution of samples to and from any bit depth.
 
-## Install
-```
-npm install bitdepth
-```
-
-## Browser
-Use the compiled file in the */dist* folder:
-```html
-<script src="bitdepth.min.js"></script>
-```
-
-Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
-```html
-<script src="https://cdn.jsdelivr.net/npm/bitdepth@5"></script>
-```
-
-Or get it from [unpkg](https://www.unpkg.com):
-```html
-<script src="https://unpkg.com/bitdepth@5"></script>
-```
-
-## Use
 Supported bit depths (to and from):
  - "8": 8-bit int (unsigned)
  - Anything between "9" and "53" (integers, signed)
  - "32f": 32-bit float
  - "64": 64-bit float
 
+## Install
+```
+npm install bitdepth
+```
+
+## Use
+
+### ES6
+import imaadpcm from **imaadpcm.js**:
 ```javascript
-const bitdepth = require("bitdepth").bitdepth;
+import bitdepth from 'bitdepth.js';
+
+// 8 bit samples
+let samples = [0, 255]
+
+// Make'em 32-bit floating point
+// The input array is modified in place.
+bitdepth(samples, "8", "32f");
+```
+
+### Node
+```javascript
+const bitdepth = require("bitdepth");
+let samples = [0, 255]
+bitdepth(samples, "8", "32f");
+```
+
+## Browser
+Use the compiled file in the */dist* folder:
+```html
+<script src="bitdepth.min.js"></script>
+<script>
+  var samples = [0, 255]
+  bitdepth(samples, "8", "32f");
+</script>
+```
+
+Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
+```html
+<script src="https://cdn.jsdelivr.net/npm/bitdepth@6"></script>
+```
+
+Or get it from [unpkg](https://www.unpkg.com):
+```html
+<script src="https://unpkg.com/bitdepth@6"></script>
+```
+
+Or as a ES6 module in modern browsers from [jspm](https://jspm.io):
+```html
+<script type="module">
+  import bitdepth from 'https://dev.jspm.io/bitdepth';
+  // ...
+</script>
+```
+
+## Example
+```javascript
+const bitdepth = require("bitdepth");
 
 // 8 bit samples
 let samples = [0, 255]
@@ -65,26 +98,14 @@ function bitdepth(samples, original, target, outputArray) {}
 ```
 
 ## Distribution
-This library is implemented as a ES6 module and also distributed as a CommonJS module, UMD module and a compiled script for browsers. If your system does not pick one automatically for you, you can pick one in the **dist/** folder.
-- The CommonJS is the one used by Node. It is served in the "main" field of this library's package.json
-- The UMD module is compatible with Node, AMD and browsers. It is served in the "browser" field.
-- The compiled dist is browser-only and should be the one served by CDNs.
-- The "module" field points to "./index.js" and should be the default entry point.
+This library is a ES6 module also distributed as a CommonJS module, UMD and a compiled script for browsers.
 
-If you are using a module bundler to compile a module that depends on this library you might need to specify what is the correct entry point as some bundlers will assume "browser". In general, you should point to "module".
+- The **CommonJS** is the one used by Node. It is served in the "main" field of package.json
+- The **UMD** module is compatible with Node, AMD and browsers. It is served in the "browser" field.
+- The **compiled dist** is browser-only and should be the one served by CDNs.
+- The **ES6** dist is **bitdepth.js**, served as "module" in package.json
 
-### webpack example:
-```javascript
-module.exports = {
-  entry: './index.js',
-  resolve: {
-    // tells webpack to use 'module' or 'main'
-    // not 'browser'
-    mainFields: ['module', 'main']
-  },
-  ...
-};
-```
+You may load both **bitdepth.umd.js** and **bitdepth.min.js** in the browser with ```<script>``` tags.
 
 ## LICENSE
 Copyright (c) 2017-2018 Rafael da Silva Rocha.
