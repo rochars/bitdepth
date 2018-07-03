@@ -1,6 +1,6 @@
 {
   "name": "bitdepth",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Change the resolution of samples.",
   "homepage": "https://github.com/rochars/bitdepth",
   "author": "Rafael S. Rocha <rocha.rafaelsilva@gmail.com>",

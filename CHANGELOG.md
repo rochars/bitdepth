@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v7.0.1 (2018-07-03)
+- Fix TypeScript declaration file.
+
 ## v7.0.0 (2018-07-02)
 - Write to and from typed arrays.
 
