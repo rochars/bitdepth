@@ -54,8 +54,6 @@ Or as a ES6 module in modern browsers from [jspm](https://jspm.io):
 ```
 
 ## API
-
-### bitdepth()
 ```javascript
 /**
  * Change the bit depth of samples. The input array.
