@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v7.0.0 (2018-07-02)
+- Write to and from typed arrays
+
 ## v6.0.0 (2018-06-25)
 - Allow better use of this lib as a dependency:
 	- package.json refactored with bundlers and ES6 envs in mind

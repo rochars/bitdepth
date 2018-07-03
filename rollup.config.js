@@ -1,5 +1,5 @@
 /*
- * https://github.com/rochars/byte-data
+ * https://github.com/rochars/bitdepth
  * Copyright (c) 2017-2018 Rafael da Silva Rocha.
  */
 
@@ -9,6 +9,16 @@
 
 import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
+import closure from 'rollup-plugin-closure-compiler-js';
+
+// Read externs definitions
+const fs = require('fs');
+let externsSrc = fs.readFileSync('./externs.js', 'utf8');
+
+// License notes for bundles that include dependencies
+const license = '/*!\n'+
+  ' * bitdepth Copyright (c) 2017-2018 Rafael da Silva Rocha.\n'+
+  ' */\n';
 
 export default [
   // cjs
@@ -17,42 +27,57 @@ export default [
     output: [
       {
         file: 'dist/bitdepth.cjs.js',
-        name: 'bitdepth',
+        name: 'bitDepth',
+        footer: 'module.exports.default = bitDepth;',
         format: 'cjs'
       }
     ],
     plugins: [
       nodeResolve(),
-      commonjs(),
+      commonjs()
     ]
   },
-  // umd
+  // umd, es
   {
     input: 'index.js',
     output: [
       {
         file: 'dist/bitdepth.umd.js',
-        name: 'bitdepth',
-        format: 'umd',
+        name: 'bitDepth',
+        format: 'umd'
+      },
+      {
+        file: 'dist/bitdepth.js',
+        format: 'es'
       }
     ],
     plugins: [
       nodeResolve(),
-      commonjs(),
+      commonjs()
     ]
   },
-  // esm
+  // browser
   {
     input: 'index.js',
     output: [
       {
-        file: 'dist/bitdepth.js',
-        format: 'es',
+        name: 'bitdepth',
+        format: 'iife',
+        file: 'dist/bitdepth.min.js',
+        banner: license,
+        footer: 'window["bitDepth"]=bitdepth;'
       }
     ],
     plugins: [
       nodeResolve(),
       commonjs(),
+      closure({
+        languageIn: 'ECMASCRIPT6',
+        languageOut: 'ECMASCRIPT5',
+        compilationLevel: 'ADVANCED',
+        warningLevel: 'VERBOSE',
+        externs: [{src:externsSrc}]
+      })
     ]
   }
 ];

@@ -19,49 +19,36 @@ npm install bitdepth
 ## Use
 
 ### ES6
-import bitdepth from **bitdepth.js**:
+import bitDepth from **bitdepth.js**:
 ```javascript
-import bitdepth from 'bitdepth.js';
-
-// 8 bit samples
-let samples = [0, 255]
-
-// Make'em 32-bit floating point
-// The input array is modified in place.
-bitdepth(samples, "8", "32f");
+import bitDepth from 'bitdepth.js';
 ```
 
 ### Node
 ```javascript
-const bitdepth = require("bitdepth");
-let samples = [0, 255]
-bitdepth(samples, "8", "32f");
+const bitDepth = require("bitdepth");
 ```
 
 ## Browser
 Use the compiled file in the */dist* folder:
 ```html
 <script src="bitdepth.min.js"></script>
-<script>
-  var samples = [0, 255]
-  bitdepth(samples, "8", "32f");
-</script>
 ```
 
 Or get it from the [jsDelivr](https://www.jsdelivr.com) CDN:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bitdepth@6"></script>
+<script src="https://cdn.jsdelivr.net/npm/bitdepth"></script>
 ```
 
 Or get it from [unpkg](https://www.unpkg.com):
 ```html
-<script src="https://unpkg.com/bitdepth@6"></script>
+<script src="https://unpkg.com/bitdepth"></script>
 ```
 
 Or as a ES6 module in modern browsers from [jspm](https://jspm.io):
 ```html
 <script type="module">
-  import bitdepth from 'https://dev.jspm.io/bitdepth';
+  import bitDepth from 'https://dev.jspm.io/bitdepth';
   // ...
 </script>
 ```
@@ -71,27 +58,16 @@ Or as a ES6 module in modern browsers from [jspm](https://jspm.io):
 ### bitdepth()
 ```javascript
 /**
- * Change the bit depth of samples. The input array is modified in-place.
- * @param {!Array<number>} samples The samples.
+ * Change the bit depth of samples. The input array.
+ * @param {!TypedArray} input The samples.
  * @param {string} original The original bit depth of the data.
  *      One of "8" ... "53", "32f", "64"
  * @param {string} target The desired bit depth for the data.
  *      One of "8" ... "53", "32f", "64"
- * @param {Array<number>=} outputArray An optional array to write
-        converted samples to. Useful for writing to typed arrays.
+ * @param {!TypedArray} output The output array.
  */
-function bitdepth(samples, original, target, outputArray) {}
+function bitDepth(input, original, target, output) {}
 ```
-
-## Distribution
-This library is a ES6 module also distributed as a CommonJS module, UMD and a compiled script for browsers.
-
-- The **CommonJS** is the one used by Node. It is served in the "main" field of package.json
-- The **UMD** module is compatible with Node, AMD and browsers. It is served in the "browser" field.
-- The **compiled dist** is browser-only and should be the one served by CDNs.
-- The **ES6** dist is **bitdepth.js**, served as "module" in package.json
-
-You may load both **bitdepth.umd.js** and **bitdepth.min.js** in the browser with ```<script>``` tags.
 
 ## LICENSE
 Copyright (c) 2017-2018 Rafael da Silva Rocha.

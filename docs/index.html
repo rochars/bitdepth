@@ -55,46 +55,24 @@
 <li>&quot;32f&quot;: 32-bit float</li>
 <li>&quot;64&quot;: 64-bit float</li>
 </ul>
-<h2>Install</h2><pre class="prettyprint source"><code>npm install bitdepth</code></pre><h2>Use</h2><h3>ES6</h3><p>import bitdepth from <strong>bitdepth.js</strong>:</p>
-<pre class="prettyprint source lang-javascript"><code>import bitdepth from 'bitdepth.js';
-
-// 8 bit samples
-let samples = [0, 255]
-
-// Make'em 32-bit floating point
-// The input array is modified in place.
-bitdepth(samples, &quot;8&quot;, &quot;32f&quot;);</code></pre><h3>Node</h3><pre class="prettyprint source lang-javascript"><code>const bitdepth = require(&quot;bitdepth&quot;);
-let samples = [0, 255]
-bitdepth(samples, &quot;8&quot;, &quot;32f&quot;);</code></pre><h2>Browser</h2><p>Use the compiled file in the <em>/dist</em> folder:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;bitdepth.min.js&quot;>&lt;/script>
-&lt;script>
-  var samples = [0, 255]
-  bitdepth(samples, &quot;8&quot;, &quot;32f&quot;);
-&lt;/script></code></pre><p>Or get it from the <a href="https://www.jsdelivr.com">jsDelivr</a> CDN:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bitdepth@6&quot;>&lt;/script></code></pre><p>Or get it from <a href="https://www.unpkg.com">unpkg</a>:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://unpkg.com/bitdepth@6&quot;>&lt;/script></code></pre><p>Or as a ES6 module in modern browsers from <a href="https://jspm.io">jspm</a>:</p>
+<h2>Install</h2><pre class="prettyprint source"><code>npm install bitdepth</code></pre><h2>Use</h2><h3>ES6</h3><p>import bitDepth from <strong>bitdepth.js</strong>:</p>
+<pre class="prettyprint source lang-javascript"><code>import bitDepth from 'bitdepth.js';</code></pre><h3>Node</h3><pre class="prettyprint source lang-javascript"><code>const bitDepth = require(&quot;bitdepth&quot;);</code></pre><h2>Browser</h2><p>Use the compiled file in the <em>/dist</em> folder:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;bitdepth.min.js&quot;>&lt;/script></code></pre><p>Or get it from the <a href="https://www.jsdelivr.com">jsDelivr</a> CDN:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bitdepth&quot;>&lt;/script></code></pre><p>Or get it from <a href="https://www.unpkg.com">unpkg</a>:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://unpkg.com/bitdepth&quot;>&lt;/script></code></pre><p>Or as a ES6 module in modern browsers from <a href="https://jspm.io">jspm</a>:</p>
 <pre class="prettyprint source lang-html"><code>&lt;script type=&quot;module&quot;>
-  import bitdepth from 'https://dev.jspm.io/bitdepth';
+  import bitDepth from 'https://dev.jspm.io/bitdepth';
   // ...
 &lt;/script></code></pre><h2>API</h2><h3>bitdepth()</h3><pre class="prettyprint source lang-javascript"><code>/**
- * Change the bit depth of samples. The input array is modified in-place.
- * @param {!Array&lt;number>} samples The samples.
+ * Change the bit depth of samples. The input array.
+ * @param {!TypedArray} input The samples.
  * @param {string} original The original bit depth of the data.
  *      One of &quot;8&quot; ... &quot;53&quot;, &quot;32f&quot;, &quot;64&quot;
  * @param {string} target The desired bit depth for the data.
  *      One of &quot;8&quot; ... &quot;53&quot;, &quot;32f&quot;, &quot;64&quot;
- * @param {Array&lt;number>=} outputArray An optional array to write
-        converted samples to. Useful for writing to typed arrays.
+ * @param {!TypedArray} output The output array.
  */
-function bitdepth(samples, original, target, outputArray) {}</code></pre><h2>Distribution</h2><p>This library is a ES6 module also distributed as a CommonJS module, UMD and a compiled script for browsers.</p>
-<ul>
-<li>The <strong>CommonJS</strong> is the one used by Node. It is served in the &quot;main&quot; field of package.json</li>
-<li>The <strong>UMD</strong> module is compatible with Node, AMD and browsers. It is served in the &quot;browser&quot; field.</li>
-<li>The <strong>compiled dist</strong> is browser-only and should be the one served by CDNs.</li>
-<li>The <strong>ES6</strong> dist is <strong>bitdepth.js</strong>, served as &quot;module&quot; in package.json</li>
-</ul>
-<p>You may load both <strong>bitdepth.umd.js</strong> and <strong>bitdepth.min.js</strong> in the browser with <code>&lt;script&gt;</code> tags.</p>
-<h2>LICENSE</h2><p>Copyright (c) 2017-2018 Rafael da Silva Rocha.</p>
+function bitDepth(input, original, target, output) {}</code></pre><h2>LICENSE</h2><p>Copyright (c) 2017-2018 Rafael da Silva Rocha.</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 &quot;Software&quot;), to deal in the Software without restriction, including
@@ -217,7 +195,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jun 25 2018 22:26:34 GMT-0300 (Hora oficial do Brasil) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Mon Jul 02 2018 21:43:06 GMT-0300 (Hora oficial do Brasil) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

@@ -11,7 +11,7 @@ if (process.argv[3] == '--min') {
     console.log('browser');
     require('browser-env')();
     require('../dist/bitdepth.min.js');
-    bitdepth = window.bitdepth;
+    bitdepth = window.bitDepth;
 
 // UMD
 } else if (process.argv[3] == '--umd') {
