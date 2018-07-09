@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v7.0.2 (2018-07-08)
+- UMD dist transpiled to ES5.
+
 ## v7.0.1 (2018-07-03)
 - Fix TypeScript declaration file.
 
