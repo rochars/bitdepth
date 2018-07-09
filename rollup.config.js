@@ -20,8 +20,16 @@ const license = '/*!\n'+
   ' * bitdepth Copyright (c) 2017-2018 Rafael da Silva Rocha.\n'+
   ' */\n';
 
+let UMDBanner = "(function (global, factory) {" +
+  "typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :" +
+  "typeof define === 'function' && define.amd ? define(factory) :" +
+  "(global.bitDepth = factory());" +
+  "}(this, (function () { 'use strict';"
+
+let UMDFooter = 'return bitDepth; })));';
+
 export default [
-  // cjs
+  // cjs, es
   {
     input: 'index.js',
     output: [
@@ -30,21 +38,6 @@ export default [
         name: 'bitDepth',
         footer: 'module.exports.default = bitDepth;',
         format: 'cjs'
-      }
-    ],
-    plugins: [
-      nodeResolve(),
-      commonjs()
-    ]
-  },
-  // umd, es
-  {
-    input: 'index.js',
-    output: [
-      {
-        file: 'dist/bitdepth.umd.js',
-        name: 'bitDepth',
-        format: 'umd'
       },
       {
         file: 'dist/bitdepth.js',
@@ -54,6 +47,30 @@ export default [
     plugins: [
       nodeResolve(),
       commonjs()
+    ]
+  },
+  // umd
+  {
+    input: 'index.js',
+    output: [
+      {
+        file: 'dist/bitdepth.umd.js',
+        name: 'bitDepth',
+        format: 'iife'
+      }
+    ],
+    plugins: [
+      nodeResolve(),
+      commonjs(),
+      closure({
+        languageIn: 'ECMASCRIPT6',
+        languageOut: 'ECMASCRIPT5',
+        compilationLevel: 'WHITESPACE_ONLY',
+        warningLevel: 'VERBOSE',
+        preserveTypeAnnotations: true,
+        createSourceMap: false,
+        outputWrapper: UMDBanner + '%output%' + UMDFooter
+      })
     ]
   },
   // browser
