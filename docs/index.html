@@ -47,7 +47,7 @@
 
     <section class="readme">
         <article><h1>bitdepth</h1><p>Copyright (c) 2017-2018 Rafael da Silva Rocha.<br>https://github.com/rochars/bitdepth</p>
-<p><a href="https://www.npmjs.com/package/bitdepth"><img src="https://img.shields.io/npm/v/bitdepth.svg?style=for-the-badge" alt="NPM version"></a> <a href="https://rochars.github.io/bitdepth/index.html"><img src="https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge" alt="Docs"></a><br><a href="https://codecov.io/gh/rochars/bitdepth"><img src="https://img.shields.io/codecov/c/github/rochars/bitdepth.svg?style=flat-square" alt="Codecov"></a> <a href="https://travis-ci.org/rochars/bitdepth"><img src="https://img.shields.io/travis/rochars/bitdepth.svg?style=flat-square" alt="Unix Build"></a> <a href="https://ci.appveyor.com/project/rochars/bitdepth"><img src="https://img.shields.io/appveyor/ci/rochars/bitdepth.svg?style=flat-square&amp;logo=appveyor" alt="Windows Build"></a> <a href="https://scrutinizer-ci.com/g/rochars/bitdepth/"><img src="https://img.shields.io/scrutinizer/g/rochars/bitdepth.svg?style=flat-square&amp;logo=scrutinizer" alt="Scrutinizer"></a></p>
+<p><a href="https://www.npmjs.com/package/bitdepth"><img src="https://img.shields.io/npm/v/bitdepth.svg?style=for-the-badge" alt="NPM version"></a> <a href="https://rochars.github.io/bitdepth/index.html"><img src="https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge" alt="Docs"></a> <a href="https://rawgit.com/rochars/bitdepth/master/test/browser.html"><img src="https://img.shields.io/badge/tests-online-blue.svg?style=for-the-badge" alt="Tests"></a><br><a href="https://codecov.io/gh/rochars/bitdepth"><img src="https://img.shields.io/codecov/c/github/rochars/bitdepth.svg?style=flat-square" alt="Codecov"></a> <a href="https://travis-ci.org/rochars/bitdepth"><img src="https://img.shields.io/travis/rochars/bitdepth.svg?style=flat-square" alt="Unix Build"></a> <a href="https://ci.appveyor.com/project/rochars/bitdepth"><img src="https://img.shields.io/appveyor/ci/rochars/bitdepth.svg?style=flat-square&amp;logo=appveyor" alt="Windows Build"></a> <a href="https://scrutinizer-ci.com/g/rochars/bitdepth/"><img src="https://img.shields.io/scrutinizer/g/rochars/bitdepth.svg?style=flat-square&amp;logo=scrutinizer" alt="Scrutinizer"></a></p>
 <p>Change the resolution of samples. Supported bit depths (to and from):</p>
 <ul>
 <li>&quot;8&quot;: 8-bit int (unsigned)</li>
@@ -57,8 +57,8 @@
 </ul>
 <h2>Install</h2><pre class="prettyprint source"><code>npm install bitdepth</code></pre><h2>Use</h2><h3>ES6</h3><p>import bitDepth from <strong>bitdepth.js</strong>:</p>
 <pre class="prettyprint source lang-javascript"><code>import bitDepth from 'bitdepth.js';</code></pre><h3>Node</h3><pre class="prettyprint source lang-javascript"><code>const bitDepth = require(&quot;bitdepth&quot;);</code></pre><h2>Browser</h2><p>Use the compiled file in the <em>/dist</em> folder:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;bitdepth.min.js&quot;>&lt;/script></code></pre><p>Or get it from the <a href="https://www.jsdelivr.com">jsDelivr</a> CDN:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bitdepth&quot;>&lt;/script></code></pre><p>Or get it from <a href="https://www.unpkg.com">unpkg</a>:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;bitdepth.min.js&quot;>&lt;/script></code></pre><p>Or get it from the <a href="https://cdn.jsdelivr.net/npm/bitdepth">jsDelivr</a> CDN:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bitdepth&quot;>&lt;/script></code></pre><p>Or get it from <a href="https://unpkg.com/bitdepth">unpkg</a>:</p>
 <pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://unpkg.com/bitdepth&quot;>&lt;/script></code></pre><p>Or as a ES6 module in modern browsers from <a href="https://jspm.io">jspm</a>:</p>
 <pre class="prettyprint source lang-html"><code>&lt;script type=&quot;module&quot;>
   import bitDepth from 'https://dev.jspm.io/bitdepth';
@@ -72,7 +72,25 @@
  *      One of &quot;8&quot; ... &quot;53&quot;, &quot;32f&quot;, &quot;64&quot;
  * @param {!TypedArray} output The output array.
  */
-function bitDepth(input, original, target, output) {}</code></pre><h2>LICENSE</h2><p>Copyright (c) 2017-2018 Rafael da Silva Rocha.</p>
+function bitDepth(input, original, target, output) {}</code></pre><h2>Distribution</h2><p>This library is a ES module also distributed as a CommonJS module, UMD module and a compiled script for browsers. It works out of the box in Node when installed with <code>npm install bitdepth</code>. It includes a TypeScript definition file.</p>
+<p>If you use the <a href="https://github.com/google/closure-compiler">Closure Compiler</a>, this package includes a externs file: <strong>./externs.js</strong>.</p>
+<h3>If you are using this lib in a browser:</h3><p>You may load both <strong>./dist/bitdepth.umd.js</strong> and <strong>./dist/bitdepth.min.js</strong> in the browser with <code>&lt;script&gt;</code> tags. Ideally you should use <strong>bitdepth.min.js</strong>. You can load it via the https://unpkg.com and https://<a href="http://www.jsdelivr.com/">www.jsdelivr.com/</a> CDNs:</p>
+<p><a href="https://unpkg.com/bitdepth">unpkg</a>:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://unpkg.com/bitdepth&quot;>&lt;/script></code></pre><p><a href="https://cdn.jsdelivr.net/npm/bitdepth">jsDelivr</a>:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/bitdepth&quot;>&lt;/script></code></pre><h3>If you are using this lib as a dependency:</h3><ul>
+<li><p>The <strong>CommonJS</strong> dist is <strong>./dist/bitdepth.cjs.js</strong>. It is the dist file used by Node. It is served in the &quot;main&quot; field of package.json and is the source you are running when you <strong>npm install bitdepth</strong>. It is not compiled or minified.</p>
+</li>
+<li><p>The <strong>UMD</strong> module is <strong>./dist/bitdepth.umd.js</strong>. It is transpiled to ES5 and compatible with Node, AMD and browsers. It is served in the &quot;browser&quot; field of package.json.</p>
+</li>
+<li><p>The <strong>browser-only</strong> dist is <strong>./dist/bitdepth.min.js</strong>. It is transpiled to ES5 and compiled. It is used in the &quot;unpkg&quot; and &quot;jsdelivr&quot; fields of package.json.</p>
+</li>
+<li><p>The <strong>ES6 dist</strong> is <strong>./dist/bitdepth.js</strong>, served as &quot;es2015&quot; in package.json. It is not compiled/minified.</p>
+</li>
+<li><p><strong>./index.js</strong> is served as &quot;module&quot; in package.json. This should be the entry point for bundlers.</p>
+</li>
+</ul>
+<p>If your module bundler is using &quot;browser&quot; as the entry point <strong>your dist should work the same</strong> but will be a larger file.</p>
+<h2>LICENSE</h2><p>Copyright (c) 2017-2018 Rafael da Silva Rocha.</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
 &quot;Software&quot;), to deal in the Software without restriction, including
@@ -195,7 +213,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Jul 08 2018 22:39:59 GMT-0300 (Hora oficial do Brasil) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sun Jul 08 2018 22:44:21 GMT-0300 (Hora oficial do Brasil) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
