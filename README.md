@@ -18,21 +18,21 @@ npm install bitdepth
 
 ## Use
 
-### ES6
-import bitDepth from **bitdepth.js**:
-```javascript
-import bitDepth from 'bitdepth.js';
-```
-
 ### Node
 ```javascript
 const bitDepth = require("bitdepth");
 ```
 
+### ES module
+import bitDepth from **./dist/bitdepth.js**:
+```javascript
+import bitDepth from './dist/bitdepth.js';
+```
+
 ## Browser
 Use the compiled file in the */dist* folder:
 ```html
-<script src="bitdepth.min.js"></script>
+<script src="./dist/bitdepth.min.js"></script>
 ```
 
 Or get it from the [jsDelivr](https://cdn.jsdelivr.net/npm/bitdepth) CDN:
