@@ -3,10 +3,8 @@
  * 
  */
 
-var chai = chai || require("chai");
 var bitDepth = bitDepth || require('./loader.js');
-var assert = chai.assert;
-var expect = chai.expect;
+var assert = assert || require('assert');
 
 describe("interface", function() {
 
@@ -50,6 +48,6 @@ describe("interface", function() {
         testFunc = function() {
             bitDepth([], "16", "57",[]);
         };
-        expect(testFunc).to.throw("Invalid bit depth.");
+        assert.throws(testFunc, /Invalid bit depth./);
     });
 });

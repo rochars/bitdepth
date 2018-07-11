@@ -9,7 +9,7 @@ let bitdepth;
 // Browser
 if (process.argv[3] == '--min') {
     console.log('browser');
-    require('browser-env')();
+    global.window = global;
     require('../dist/bitdepth.min.js');
     bitdepth = window.bitDepth;
 
@@ -26,11 +26,15 @@ if (process.argv[3] == '--min') {
 // esm
 } else if (process.argv[3] == '--esm') {
 	console.log('esm');
+	require = require("esm")(module);
+	global.module = module;
 	bitdepth = require('../dist/bitdepth.js').default;
 
 // ESM
 } else {
 	console.log('source');
+	require = require("esm")(module);
+	global.module = module;
 	bitdepth = require('../index.js').default;
 }
 

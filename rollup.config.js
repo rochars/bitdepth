@@ -7,8 +7,6 @@
  * @fileoverview rollup configuration file.
  */
 
-import commonjs from 'rollup-plugin-commonjs';
-import nodeResolve from 'rollup-plugin-node-resolve';
 import closure from 'rollup-plugin-closure-compiler-js';
 
 // Read externs definitions
@@ -25,7 +23,6 @@ let UMDBanner = "(function (global, factory) {" +
   "typeof define === 'function' && define.amd ? define(factory) :" +
   "(global.bitDepth = factory());" +
   "}(this, (function () { 'use strict';"
-
 let UMDFooter = 'return bitDepth; })));';
 
 export default [
@@ -43,10 +40,6 @@ export default [
         file: 'dist/bitdepth.js',
         format: 'es'
       }
-    ],
-    plugins: [
-      nodeResolve(),
-      commonjs()
     ]
   },
   // umd
@@ -60,8 +53,6 @@ export default [
       }
     ],
     plugins: [
-      nodeResolve(),
-      commonjs(),
       closure({
         languageIn: 'ECMASCRIPT6',
         languageOut: 'ECMASCRIPT5',
@@ -86,8 +77,6 @@ export default [
       }
     ],
     plugins: [
-      nodeResolve(),
-      commonjs(),
       closure({
         languageIn: 'ECMASCRIPT6',
         languageOut: 'ECMASCRIPT5',
