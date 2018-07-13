@@ -5,7 +5,7 @@
  @param {!TypedArray} output
  */
 function bitDepth(input,original,target,output){validateBitDepth_(original);validateBitDepth_(target);/** @type {!Function} */ var toFunction=getBitDepthFunction_(original,target);/** @type {!Object<string,number>} */ var options={oldMin:Math.pow(2,parseInt(original,10))/2,newMin:Math.pow(2,parseInt(target,10))/2,oldMax:Math.pow(2,parseInt(original,10))/2-1,newMax:Math.pow(2,parseInt(target,10))/2-1};/** @const @type {number} */ var len=input.length;if(original=="8")for(var i=0;i<len;i++)output[i]=
-input[i]-=128;for(var i$0=0;i$0<len;i$0++)output[i$0]=toFunction(input[i$0],options);if(target=="8")for(var i$1=0;i$1<len;i$1++)output[i$1]=output[i$1]+=128}/**
+input[i]-=128;if(original=="32f"||original=="64")truncateSamples(input);for(var i$0=0;i$0<len;i$0++)output[i$0]=toFunction(input[i$0],options);if(target=="8")for(var i$1=0;i$1<len;i$1++)output[i$1]=output[i$1]+=128}/**
  @private
  @param {number} sample
  @param {!Object<string,number>} args
@@ -39,4 +39,4 @@ function getBitDepthFunction_(original,target){/** @type {!Function} */ var func
  @param {string} bitDepth
  @throws {Error}
  */
-function validateBitDepth_(bitDepth){if(bitDepth!="32f"&&bitDepth!="64"&&(parseInt(bitDepth,10)<"8"||parseInt(bitDepth,10)>"53"))throw new Error("Invalid bit depth.");}return bitDepth}();return bitDepth; })));
+function validateBitDepth_(bitDepth){if(bitDepth!="32f"&&bitDepth!="64"&&(parseInt(bitDepth,10)<"8"||parseInt(bitDepth,10)>"53"))throw new Error("Invalid bit depth.");}/** @private */ function truncateSamples(samples){/** @type {number} */ var len=samples.length;for(var i=0;i<len;i++)if(samples[i]>1)samples[i]=1;else if(samples[i]<-1)samples[i]=-1}return bitDepth}();return bitDepth; })));

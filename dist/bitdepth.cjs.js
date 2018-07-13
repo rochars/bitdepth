@@ -37,7 +37,7 @@
 const f64f32_ = new Float32Array(1);
 
 /**
- * Change the bit depth of samples. The input array.
+ * Change the bit depth of samples.
  * @param {!TypedArray} input The samples.
  * @param {string} original The original bit depth of the data.
  *      One of "8" ... "53", "32f", "64"
@@ -64,6 +64,9 @@ function bitDepth(input, original, target, output) {
     for (let i=0; i<len; i++) {
       output[i] = input[i] -= 128;
     }
+  }
+  if (original == "32f" || original == "64") {
+    truncateSamples(input);
   }
   // change the resolution of the samples
   for (let i=0; i<len; i++) {        
@@ -168,6 +171,22 @@ function validateBitDepth_(bitDepth) {
   if ((bitDepth != "32f" && bitDepth != "64") &&
       (parseInt(bitDepth, 10) < "8" || parseInt(bitDepth, 10) > "53")) {
     throw new Error("Invalid bit depth.");
+  }
+}
+
+/**
+ * Truncate float samples on over and underflow.
+ * @private
+ */
+function truncateSamples(samples) {
+  /** @type {number} */   
+  let len = samples.length;
+  for (let i=0; i<len; i++) {
+    if (samples[i] > 1) {
+      samples[i] = 1;
+    } else if (samples[i] < -1) {
+      samples[i] = -1;
+    }
   }
 }
 

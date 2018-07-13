@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v7.0.3 (2018-07-13)
+- Fix: Trancate floating point samples on overflow or underflow.
+
 ## v7.0.2 (2018-07-08)
 - UMD dist transpiled to ES5.
 

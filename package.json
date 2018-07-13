@@ -1,6 +1,6 @@
 {
   "name": "bitdepth",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Change the resolution of samples.",
   "homepage": "https://github.com/rochars/bitdepth",
   "author": "Rafael S. Rocha <rocha.rafaelsilva@gmail.com>",
@@ -20,13 +20,9 @@
     "audio",
     "samples",
     "8-bit",
-    "11-bit",
-    "12-bit",
-    "20-bit",
     "16-bit",
     "24-bit",
     "32-bit",
-    "48-bit",
     "64-bit",
     "integer",
     "float"
