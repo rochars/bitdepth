@@ -1,7 +1,4 @@
 /*
- * bitdepth: Change the resolution of samples to and from any bit depth.
- * https://github.com/rochars/bitdepth
- *
  * Copyright (c) 2017-2018 Rafael da Silva Rocha.
  *
  * Permission is hereby granted, free of charge, to any person obtaining
@@ -26,7 +23,8 @@
  */
 
 /**
- * @fileoverview The bitdepth() function and private helper functions.
+ * @fileoverview The changeBitdepth() function.
+ * @see https://github.com/rochars/bitdepth
  */
 
 /** @module bitdepth */
@@ -173,7 +171,7 @@ function validateBitDepth_(bitDepth) {
 }
 
 /**
- * Truncate float samples on over and underflow.
+ * Truncate float samples on overflow.
  * @private
  */
 function truncateSamples(samples) {
