@@ -3,7 +3,7 @@
  * 
  */
 
-var bitDepth = bitDepth || require('./loader.js');
+var bitDepth = bitDepth || require('../../test/loader.js');
 var assert = assert || require('assert');
 var testFunc;
 

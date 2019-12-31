@@ -23,30 +23,18 @@
  */
 
 /**
- * @fileoverview rollup configuration file.
+ * @fileoverview Externs for bitdepth 8.0
  * @see https://github.com/rochars/bitdepth
+ * @externs
  */
 
-import compiler from '@ampproject/rollup-plugin-closure-compiler';
-
-export default [
-  {
-    input: 'index.js',
-    output: [
-      {
-        file: 'dist/bitdepth.js',
-        name: 'bitdepth',
-        format: 'umd'
-      },
-    ],
-    plugins: [
-      compiler({
-        language_in: 'ECMASCRIPT6',
-        language_out: 'ECMASCRIPT3',
-        compilation_level: 'SIMPLE',
-        warning_level: 'VERBOSE',
-        externs: ['externs/bitdepth.js']
-      })
-    ]
-  }
-];
+/**
+ * Change the bit depth of the samples.
+ * @param {!TypedArray} input The samples.
+ * @param {string} original The original bit depth of the data.
+ *      One of "8" ... "53", "32f", "64"
+ * @param {string} target The desired bit depth for the data.
+ *      One of "8" ... "53", "32f", "64"
+ * @param {!TypedArray} output The output array.
+ */
+function changeBitDepth(input, original, target, output) {}

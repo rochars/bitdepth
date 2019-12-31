@@ -43,7 +43,7 @@ const f64f32_ = new Float32Array(1);
  *      One of "8" ... "53", "32f", "64"
  * @param {!TypedArray} output The output array.
  */
-export default function bitDepth(input, original, target, output) {
+export function changeBitDepth(input, original, target, output) {
   validateBitDepth_(original);
   validateBitDepth_(target);
   /** @type {!Function} */

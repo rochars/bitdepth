@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 8.0.0 - 2019-12-31
+- New package structure:
+	* No more default exports
+	* dist file is "./dist/uint-buffer.js", a UMD served as "main"
+	* ES6 source is "./index.js", served as "module"
+- bitDepth() renamed to changeBitDepth. Used it like this:
+```javascript
+const changeBitDepth = require('bitdepth').changeBitDepth;
+```
+
 ## v7.0.3 (2018-07-13)
 - Fix: Trancate floating point samples on overflow or underflow.
 
