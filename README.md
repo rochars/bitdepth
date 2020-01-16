@@ -17,16 +17,21 @@ npm install bitdepth
 ### Node
 ```javascript
 const changeBitDepth = require("bitdepth").changeBitDepth;
-changeBitDepth(originalArray, "32f", "64", outputArray);
+// The params, in order:
+// - the original sample array
+// - the original bit depth
+// - the output array for the new samples
+// - the target bit depth
+changeBitDepth(originalArray, "32f", outputArray, "16");
 ```
-The outputArray must be a typed array.
+**The outputArray must be a typed array**.
 
 ## Browser
 Use the **bitdepth.js** file in the */dist* folder:
 ```html
 <script src="bitdepth.js"></script>
 <script>
-	bitdepth.changeBitDepth(originalArray, "32f", "64", outputArray);
+	bitdepth.changeBitDepth(originalArray, "32f", outputArray, "16");
 </script>
 ```
 
@@ -41,13 +46,13 @@ Or get it from [unpkg](https://unpkg.com/bitdepth):
 ```
 
 ## Bit depth codes
-The *original* and *target* params informing the original and target bit depths are **strings** representing the bit depth code. Their values can be:
+The params informing the original and target bit depths are **strings** representing the bit depth code. Their values can be:
 - A string representing any integer from "8" to "53" (integer samples)
 - "32f" for 32 bit floating-point
 - "64" for 64 bit floating-point
 
 ## Range of the samples
-This lib is inteded to be used with PCM audio data. Note that:
+This lib is inteded to be used with PCM data. Note that:
 - 8-bit samples range from 0 to 255 (unsigned)
 - Other integers are all signed
 - 32 fp and 64 range from -1 to 1

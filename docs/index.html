@@ -69,14 +69,19 @@ https://github.com/rochars/bitdepth</p>
 <h2>Use</h2>
 <h3>Node</h3>
 <pre class="prettyprint source lang-javascript"><code>const changeBitDepth = require(&quot;bitdepth&quot;).changeBitDepth;
-changeBitDepth(originalArray, &quot;32f&quot;, &quot;64&quot;, outputArray);
+// The params, in order:
+// - the original sample array
+// - the original bit depth
+// - the output array for the new samples
+// - the target bit depth
+changeBitDepth(originalArray, &quot;32f&quot;, outputArray, &quot;16&quot;);
 </code></pre>
-<p>The outputArray must be a typed array.</p>
+<p><strong>The outputArray must be a typed array</strong>.</p>
 <h2>Browser</h2>
 <p>Use the <strong>bitdepth.js</strong> file in the <em>/dist</em> folder:</p>
 <pre class="prettyprint source lang-html"><code>&lt;script src=&quot;bitdepth.js&quot;>&lt;/script>
 &lt;script>
-	bitdepth.changeBitDepth(originalArray, &quot;32f&quot;, &quot;64&quot;, outputArray);
+	bitdepth.changeBitDepth(originalArray, &quot;32f&quot;, outputArray, &quot;16&quot;);
 &lt;/script>
 </code></pre>
 <p>Or get it from the <a href="https://cdn.jsdelivr.net/npm/bitdepth">jsDelivr</a> CDN:</p>
@@ -86,14 +91,14 @@ changeBitDepth(originalArray, &quot;32f&quot;, &quot;64&quot;, outputArray);
 <pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://unpkg.com/bitdepth&quot;>&lt;/script>
 </code></pre>
 <h2>Bit depth codes</h2>
-<p>The <em>original</em> and <em>target</em> params informing the original and target bit depths are <strong>strings</strong> representing the bit depth code. Their values can be:</p>
+<p>The params informing the original and target bit depths are <strong>strings</strong> representing the bit depth code. Their values can be:</p>
 <ul>
 <li>A string representing any integer from &quot;8&quot; to &quot;53&quot; (integer samples)</li>
 <li>&quot;32f&quot; for 32 bit floating-point</li>
 <li>&quot;64&quot; for 64 bit floating-point</li>
 </ul>
 <h2>Range of the samples</h2>
-<p>This lib is inteded to be used with PCM audio data. Note that:</p>
+<p>This lib is inteded to be used with PCM data. Note that:</p>
 <ul>
 <li>8-bit samples range from 0 to 255 (unsigned)</li>
 <li>Other integers are all signed</li>
