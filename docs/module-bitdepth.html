@@ -81,7 +81,7 @@
 
     
 
-    <h4 class="name" id=".changeBitDepth"><span class="type-signature">(static) </span>changeBitDepth<span class="signature">(input<span class="signature-attributes">non-null</span>, original, target, output<span class="signature-attributes">non-null</span>)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".changeBitDepth"><span class="type-signature">(static) </span>changeBitDepth<span class="signature">(samples, bithDepth, newSamples<span class="signature-attributes">non-null</span>, targetBitDepth)</span><span class="type-signature"></span></h4>
 
     
 
@@ -93,7 +93,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line44">line 44</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line40">line 40</a>
     </li></ul></dd>
     
 
@@ -133,7 +133,7 @@
 
 
 <div class="description">
-    Change the bit depth of samples.
+    Change the bit depth of PCM samples.
 </div>
 
 
@@ -171,12 +171,15 @@
 
         <tr>
             
-                <td class="name"><code>input</code></td>
+                <td class="name"><code>samples</code></td>
             
 
             <td class="type">
             
                 
+<span class="param-type">Array</span>
+|
+
 <span class="param-type">TypedArray</span>
 
 
@@ -187,14 +190,14 @@
 
             
 
-            <td class="description last">The samples.</td>
+            <td class="description last">The original samples.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>original</code></td>
+                <td class="name"><code>bithDepth</code></td>
             
 
             <td class="type">
@@ -210,37 +213,14 @@
 
             
 
-            <td class="description last">The original bit depth of the data.     One of "8" ... "53", "32f", "64"</td>
+            <td class="description last">The original bit depth.</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>target</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The desired bit depth for the data.     One of "8" ... "53", "32f", "64"</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>output</code></td>
+                <td class="name"><code>newSamples</code></td>
             
 
             <td class="type">
@@ -260,6 +240,29 @@
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>targetBitDepth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The target bit depth.</td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -276,6 +279,35 @@
 
 
 
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        If original or target bit depths are not valid.
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl class="param-type">
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
 
 
 

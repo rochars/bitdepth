@@ -23,18 +23,17 @@
  */
 
 /**
- * @fileoverview Externs for bitdepth 8.0
+ * @fileoverview Externs for bitdepth 9.0
  * @see https://github.com/rochars/bitdepth
  * @externs
  */
 
 /**
- * Change the bit depth of the samples.
- * @param {!TypedArray} input The samples.
- * @param {string} original The original bit depth of the data.
- *      One of "8" ... "53", "32f", "64"
- * @param {string} target The desired bit depth for the data.
- *      One of "8" ... "53", "32f", "64"
- * @param {!TypedArray} output The output array.
+ * Change the bit depth of PCM samples.
+ * @param {!Array|!TypedArray} samples The original samples.
+ * @param {string} bithDepth The original bit depth.
+ * @param {!TypedArray} newSamples The output array.
+ * @param {string} targetBitDepth The target bit depth.
+ * @throws {Error} If original or target bit depths are not valid.
  */
-function changeBitDepth(input, original, target, output) {}
+function changeBitDepth(samples, bithDepth, newSamples, targetBitDepth) {}

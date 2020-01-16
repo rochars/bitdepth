@@ -62,20 +62,21 @@
 https://github.com/rochars/bitdepth</p>
 <p><a href="https://www.npmjs.com/package/bitdepth"><img src="https://img.shields.io/npm/v/bitdepth.svg?style=for-the-badge" alt="NPM version"></a> <a href="https://rochars.github.io/bitdepth/index.html"><img src="https://img.shields.io/badge/docs-online-blue.svg?style=for-the-badge" alt="Docs"></a> <a href="https://rawgit.com/rochars/bitdepth/master/test/dist/browser.html"><img src="https://img.shields.io/badge/tests-online-blue.svg?style=for-the-badge" alt="Tests"></a><br>
 <a href="https://codecov.io/gh/rochars/bitdepth"><img src="https://img.shields.io/codecov/c/github/rochars/bitdepth.svg?style=flat-square" alt="Codecov"></a> <a href="https://travis-ci.org/rochars/bitdepth"><img src="https://img.shields.io/travis/rochars/bitdepth.svg?style=flat-square" alt="Unix Build"></a> <a href="https://ci.appveyor.com/project/rochars/bitdepth"><img src="https://img.shields.io/appveyor/ci/rochars/bitdepth.svg?style=flat-square&amp;logo=appveyor" alt="Windows Build"></a> <a href="https://scrutinizer-ci.com/g/rochars/bitdepth/"><img src="https://img.shields.io/scrutinizer/g/rochars/bitdepth.svg?style=flat-square&amp;logo=scrutinizer" alt="Scrutinizer"></a></p>
-<p><strong>bitdepth</strong> is a module to change the bit depth of samples.</p>
+<p>Change the bit depth of PCM samples.</p>
 <h2>Install</h2>
 <pre class="prettyprint source"><code>npm install bitdepth
 </code></pre>
 <h2>Use</h2>
 <h3>Node</h3>
 <pre class="prettyprint source lang-javascript"><code>const changeBitDepth = require(&quot;bitdepth&quot;).changeBitDepth;
+changeBitDepth(originalArray, &quot;32f&quot;, &quot;64&quot;, outputArray);
 </code></pre>
+<p>The outputArray must be a typed array.</p>
 <h2>Browser</h2>
 <p>Use the <strong>bitdepth.js</strong> file in the <em>/dist</em> folder:</p>
 <pre class="prettyprint source lang-html"><code>&lt;script src=&quot;bitdepth.js&quot;>&lt;/script>
 &lt;script>
-	var changeBitDepth = bitdepth.changeBitDepth;
-	changeBitDepth(originalArray, &quot;32f&quot;, &quot;64&quot;, outputArray);
+	bitdepth.changeBitDepth(originalArray, &quot;32f&quot;, &quot;64&quot;, outputArray);
 &lt;/script>
 </code></pre>
 <p>Or get it from the <a href="https://cdn.jsdelivr.net/npm/bitdepth">jsDelivr</a> CDN:</p>
@@ -84,17 +85,32 @@ https://github.com/rochars/bitdepth</p>
 <p>Or get it from <a href="https://unpkg.com/bitdepth">unpkg</a>:</p>
 <pre class="prettyprint source lang-html"><code>&lt;script src=&quot;https://unpkg.com/bitdepth&quot;>&lt;/script>
 </code></pre>
+<h2>Bit depth codes</h2>
+<p>The <em>original</em> and <em>target</em> params informing the original and target bit depths are <strong>strings</strong> representing the bit depth code. Their values can be:</p>
+<ul>
+<li>A string representing any integer from &quot;8&quot; to &quot;53&quot; (integer samples)</li>
+<li>&quot;32f&quot; for 32 bit floating-point</li>
+<li>&quot;64&quot; for 64 bit floating-point</li>
+</ul>
+<h2>Range of the samples</h2>
+<p>This lib is inteded to be used with PCM audio data. Note that:</p>
+<ul>
+<li>8-bit samples range from 0 to 255 (unsigned)</li>
+<li>Other integers are all signed</li>
+<li>32 fp and 64 range from -1 to 1</li>
+</ul>
+<h2>Dithering</h2>
+<p>This lib does not apply any dither to the samples.</p>
 <h2>API</h2>
 <pre class="prettyprint source lang-javascript"><code>/**
- * Change the bit depth of samples. The input array.
- * @param {!TypedArray} input The samples.
- * @param {string} original The original bit depth of the data.
- *      One of &quot;8&quot; ... &quot;53&quot;, &quot;32f&quot;, &quot;64&quot;
- * @param {string} target The desired bit depth for the data.
- *      One of &quot;8&quot; ... &quot;53&quot;, &quot;32f&quot;, &quot;64&quot;
- * @param {!TypedArray} output The output array.
+ * Change the bit depth of PCM samples.
+ * @param {!Array|!TypedArray} samples The original samples.
+ * @param {string} bithDepth The original bit depth.
+ * @param {!TypedArray} newSamples The output array.
+ * @param {string} targetBitDepth The target bit depth.
+ * @throws {Error} If original or target bit depths are not valid.
  */
-export function changeBitDepth(input, original, target, output) {}
+function changeBitDepth(samples, bithDepth, newSamples, targetBitDepth) {};
 </code></pre>
 <h2>LICENSE</h2>
 <p>Copyright (c) 2017-2019 Rafael da Silva Rocha.</p>
@@ -192,7 +208,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></article>
 
 
             
-                <div class="description">The changeBitdepth() function.</div>
+                <div class="description">A module to change the bit depth of PCM samples.</div>
             
 
             

@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## 9.0.0 - 2020-01-16
+- *output* param now is required to be a typed array. Previous versions
+would work with regulars arrays too, but for now on regular arrays wont
+work anymore.
+
+- changeBitDepth() params update:
+```javascript
+/**
+ * Change the bit depth of PCM samples.
+ * @param {!Array|!TypedArray} samples The original samples.
+ * @param {string} bithDepth The original bit depth.
+ * @param {!TypedArray} newSamples The output array.
+ * @param {string} targetBitDepth The target bit depth.
+ * @throws {Error} If original or target bit depths are not valid.
+ */
+changeBitDepth(samples, bithDepth, newSamples, targetBitDepth);
+```
+
+### Other changes
+- *originalSamples* type defined as {!Array|!TypedArray} to ease integration
+- Remove unecessary conversions
+
+
 ## 8.0.0 - 2019-12-31
 - New package structure:
 	* No more default exports

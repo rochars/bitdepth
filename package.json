@@ -1,7 +1,7 @@
 {
   "name": "bitdepth",
-  "version": "8.0.0",
-  "description": "Change the bit depth of samples.",
+  "version": "9.0.0",
+  "description": "Change the bit depth of PCM samples.",
   "homepage": "https://github.com/rochars/bitdepth",
   "author": "Rafael da Silva Rocha <rocha.rafaelsilva@gmail.com>",
   "license": "MIT",
